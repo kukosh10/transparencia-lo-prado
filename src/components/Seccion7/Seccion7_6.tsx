@@ -2,6 +2,35 @@ import { useState } from 'react';
 import { ChevronDown, ChevronUp, ArrowLeft, Calendar, Search } from 'lucide-react';
 import Seccion7_6OrdenesDemolicion, { ordenesPorAnio, type OrdenDemolicion } from './Seccion7_6OrdenesDemolicion';
 import Seccion7_6CierreCalles, { cierresCallesPorAnio, type CierreCalle } from './Seccion7_6CierreCalles';
+import Seccion7_6CambioNombre, { cambioNombreViaPorAnio, type CambioNombreVia } from './Seccion7_6CambioNombre';
+import Seccion7_6SentidoTransito, { sentidosTransitoPorAnio, type SentidoTransito } from './Seccion7_6SentidoTransito';
+import Seccion7_6Sumarios, { sumariosPorAnio, type Sumario } from './Seccion7_6Sumarios';
+import Seccion7_6Comodato, { comodatosPorAnio, type Comodato } from './Seccion7_6Comodato';
+import Seccion7_6Convenios, { conveniosPorAnio, type Convenio } from './Seccion7_6Convenios';
+import Seccion7_6Patentes from './Seccion7_6Patentes';
+
+const patentesPermisos = [
+  'Patente Alcohol',
+  'Patente Comercial',
+  'Patente Profesional',
+  'Patente Provisoria',
+  'Patente Micro Empresa Familiar',
+  'Permiso Ferias Libres',
+  'Permiso Feria Santa Marta',
+  'Permiso Feria Los Tamarindos',
+  'Permiso Estacionado',
+  'Permiso de Kiosco',
+  'Permiso Exento',
+  'Eliminación de Patentes y Permisos',
+  'Clausura de Patentes',
+  'Ampliación de Giro',
+  'Cambio de Giro',
+  'Cambio de Dirección Comercial',
+  'Cambio de Razón Social',
+  'Retiro de Kiosco',
+  'Ampliación de Kiosco',
+  'Ampliación de Horario'
+] as const;
 
 interface Seccion7_6Props {
   onVolver: () => void;
@@ -10,7 +39,8 @@ interface Seccion7_6Props {
 interface CategoriaResolucion {
   id: string;
   nombre: string;
-  documentosPorAnio?: Record<string, Array<OrdenDemolicion | CierreCalle>>;
+  terminosBusqueda?: readonly string[];
+  documentosPorAnio?: Record<string, Array<OrdenDemolicion | CierreCalle | CambioNombreVia | SentidoTransito | Sumario | Comodato | Convenio>>;
 }
 
 const normalizarTexto = (texto: string) =>
@@ -26,12 +56,12 @@ export default function Seccion7_6({ onVolver }: Seccion7_6Props) {
   const resolucionesGenerales: CategoriaResolucion[] = [
     { id: 'ordenes-demolicion', nombre: 'Órdenes de Demolición', documentosPorAnio: ordenesPorAnio },
     { id: 'cierre-calles', nombre: 'Cierre de Calles y/o Pasajes', documentosPorAnio: cierresCallesPorAnio },
-    { id: 'cambio-nombre-via', nombre: 'Cambio de Nombre de Vía Pública' },
-    { id: 'cambio-sentido-transito', nombre: 'Cambio de Sentido de Tránsito' },
-    { id: 'sumarios', nombre: 'Sumarios' },
-    { id: 'comodatos', nombre: 'Comodatos' },
-    { id: 'convenios-servicios', nombre: 'Convenios Otros Servicios Públicos' },
-    { id: 'patentes-permisos', nombre: 'Patentes y Permisos' },
+    { id: 'cambio-nombre-via', nombre: 'Cambio de Nombre de Vía Pública', documentosPorAnio: cambioNombreViaPorAnio },
+    { id: 'cambio-sentido-transito', nombre: 'Cambio de Sentido de Tránsito', documentosPorAnio: sentidosTransitoPorAnio },
+    { id: 'sumarios', nombre: 'Sumarios', documentosPorAnio: sumariosPorAnio },
+    { id: 'comodatos', nombre: 'Comodatos', documentosPorAnio: comodatosPorAnio },
+    { id: 'convenios-servicios', nombre: 'Convenios Otros Servicios Públicos', documentosPorAnio: conveniosPorAnio },
+    { id: 'patentes-permisos', nombre: 'Patentes y Permisos', terminosBusqueda: patentesPermisos },
     { id: 'permiso-uso', nombre: 'Permiso de Uso' },
     { id: 'estacionamiento-reservado', nombre: 'Estacionamiento Reservado' },
     { id: 'compras-publicas', nombre: 'Compras Públicas' },
@@ -86,6 +116,7 @@ export default function Seccion7_6({ onVolver }: Seccion7_6Props) {
     normalizarTexto(tituloSeccion).includes(terminoBusqueda) ||
     categorias.some((categoria) =>
       normalizarTexto(categoria.nombre).includes(terminoBusqueda) ||
+      categoria.terminosBusqueda?.some((termino) => normalizarTexto(termino).includes(terminoBusqueda)) ||
       registrosCoincidentes(categoria).length > 0
     );
 
@@ -95,7 +126,10 @@ export default function Seccion7_6({ onVolver }: Seccion7_6Props) {
     const categoriasFiltradas = busquedaActiva
       ? listaCategorias.filter((categoria) => {
           const coincideCategoria = normalizarTexto(categoria.nombre).includes(terminoBusqueda);
-          return coincideTituloSeccion || coincideCategoria || registrosCoincidentes(categoria).length > 0;
+          const coincideTermino = categoria.terminosBusqueda?.some((termino) =>
+            normalizarTexto(termino).includes(terminoBusqueda)
+          );
+          return coincideTituloSeccion || coincideCategoria || coincideTermino || registrosCoincidentes(categoria).length > 0;
         })
       : listaCategorias;
 
@@ -121,8 +155,11 @@ export default function Seccion7_6({ onVolver }: Seccion7_6Props) {
             {categoriasFiltradas.map((cat) => {
               const claveAcordeon = `${cat.id}-${anioSeleccionado}`;
               const coincideCategoria = terminoBusqueda.length > 0 && normalizarTexto(cat.nombre).includes(terminoBusqueda);
+              const coincideTermino = terminoBusqueda.length > 0 && cat.terminosBusqueda?.some((termino) =>
+                normalizarTexto(termino).includes(terminoBusqueda)
+              );
               const isOpen = acordeonesAbiertos[claveAcordeon] ||
-                (busquedaActiva && (coincideTituloSeccion || coincideCategoria || registrosCoincidentes(cat).length > 0));
+                (busquedaActiva && (coincideTituloSeccion || coincideCategoria || coincideTermino || registrosCoincidentes(cat).length > 0));
 
               return (
                 <div key={cat.id} className="bg-white rounded-xl border border-slate-200 shadow-xs transition-all hover:shadow-md">
@@ -151,6 +188,38 @@ export default function Seccion7_6({ onVolver }: Seccion7_6Props) {
                         <Seccion7_6CierreCalles
                           anio={anioSeleccionado}
                           busqueda={coincideCategoria || coincideTituloSeccion ? '' : busqueda}
+                        />
+                      ) : cat.id === 'cambio-nombre-via' ? (
+                        <Seccion7_6CambioNombre
+                          anio={anioSeleccionado}
+                          busqueda={coincideCategoria || coincideTituloSeccion ? '' : busqueda}
+                        />
+                      ) : cat.id === 'cambio-sentido-transito' ? (
+                        <Seccion7_6SentidoTransito
+                          anio={anioSeleccionado}
+                          busqueda={coincideCategoria || coincideTituloSeccion ? '' : busqueda}
+                        />
+                      ) : cat.id === 'sumarios' ? (
+                        <Seccion7_6Sumarios
+                          anio={anioSeleccionado}
+                          busqueda={coincideCategoria || coincideTituloSeccion ? '' : busqueda}
+                        />
+                      ) : cat.id === 'comodatos' ? (
+                        <Seccion7_6Comodato
+                          anio={anioSeleccionado}
+                          busqueda={coincideCategoria || coincideTituloSeccion ? '' : busqueda}
+                        />
+                      ) : cat.id === 'convenios-servicios' ? (
+                        <Seccion7_6Convenios
+                          anio={anioSeleccionado}
+                          busqueda={coincideCategoria || coincideTituloSeccion ? '' : busqueda}
+                        />
+                      ) : cat.id === 'patentes-permisos' ? (
+                        <Seccion7_6Patentes
+                          anio={anioSeleccionado}
+                          busqueda={coincideCategoria || coincideTituloSeccion ? '' : busqueda}
+                          categorias={patentesPermisos}
+                          onCambiarAnio={setAnioSeleccionado}
                         />
                       ) : (
                         <p className="text-xs text-slate-400 italic text-center py-2">
@@ -195,7 +264,10 @@ export default function Seccion7_6({ onVolver }: Seccion7_6Props) {
           <select
             id="select-anio"
             value={anioSeleccionado}
-            onChange={(e) => setAnioSeleccionado(e.target.value)}
+            onChange={(e) => {
+              setAcordeonesAbiertos({});
+              setAnioSeleccionado(e.target.value);
+            }}
             className="text-xs font-bold text-blue-800 bg-transparent border-none outline-none cursor-pointer pr-2"
           >
             {aniosDisponibles.map((anio) => (

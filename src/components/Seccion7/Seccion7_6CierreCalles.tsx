@@ -1,3 +1,5 @@
+import PdfLinkButton from '../PdfLinkButton';
+
 interface Seccion7_6CierreCallesProps {
   anio: string;
   busqueda: string;
@@ -14,12 +16,121 @@ export interface CierreCalle {
   ultimaActualizacion: string;
   descripcion: string;
   enlaceDocumento: string;
+  urlDocumento?: string;
   enlaceModificacion: string;
+  urlModificacion?: string;
 }
 
 export const cierresCallesPorAnio: Record<string, CierreCalle[]> = {
-  // Registro de Cierre de Calles para el año 2016, según la imagen proporcionada.
+  // Aquí van las URL de Drive en urlDocumento y urlModificacion del registro que tenga PDF.
   '2016': [
+    {
+      tipoNorma: 'Decreto',
+      denominacion: 'Tránsito y Transporte Público',
+      titulo: 'Cierre de Calle y/o Pasajes',
+      numero: 'No hay',
+      fecha: 'No Hay',
+      fechaPublicacion: 'No hay',
+      efectosGenerales: 'No',
+      ultimaActualizacion: 'No hay',
+      descripcion: 'No existen para este año',
+      enlaceDocumento: 'no hay',
+      enlaceModificacion: 'No Hay'
+    }
+  ],
+  '2015': [
+    {
+      tipoNorma: 'Decreto',
+      denominacion: 'Tránsito y Transporte Público',
+      titulo: 'Cierre de Calle y/o Pasajes',
+      numero: 'No hay',
+      fecha: 'No Hay',
+      fechaPublicacion: 'No hay',
+      efectosGenerales: 'No',
+      ultimaActualizacion: 'No hay',
+      descripcion: 'No existen para este año',
+      enlaceDocumento: 'no hay',
+      enlaceModificacion: 'No Hay'
+    }
+  ],
+  '2014': [
+    {
+      tipoNorma: 'Decreto',
+      denominacion: 'Transito',
+      titulo: 'Cierre temporal de calle',
+      numero: '3503',
+      fecha: '03.12.14',
+      fechaPublicacion: '06.01.2015 Página Web',
+      efectosGenerales: 'Si',
+      ultimaActualizacion: 'Sin Modificaciones',
+      descripcion: 'AUTORIZA CIERRE TEMPORAL DE CALLES Y DESVIOS DE TRANSITO EN FECHAS QUE INDICA, POR FUNCIONAMIENTO DE FERIAS NAVIDEÑAS LO PRADO.',
+      enlaceDocumento: 'PDF',
+      urlDocumento: '', // Aquí poner URL de Drive del PDF de publicación.
+      enlaceModificacion: 'Sin Modificaciones',
+      urlModificacion: '' // Aquí poner URL de Drive del PDF de modificación.
+    }
+  ],
+  '2013': [
+    {
+      tipoNorma: 'Decreto',
+      denominacion: 'Tránsito y Transporte Público',
+      titulo: 'Cierre de Calle y/o Pasajes',
+      numero: 'No hay',
+      fecha: 'No Hay',
+      fechaPublicacion: 'No hay',
+      efectosGenerales: 'No',
+      ultimaActualizacion: 'No hay',
+      descripcion: 'No existen para este año',
+      enlaceDocumento: 'no hay',
+      enlaceModificacion: 'No Hay'
+    }
+  ],
+  '2012': [
+    {
+      tipoNorma: 'Decreto',
+      denominacion: 'Tránsito y Transporte Público',
+      titulo: 'Cierre de Calle y/o Pasajes',
+      numero: 'No hay',
+      fecha: 'No Hay',
+      fechaPublicacion: 'No hay',
+      efectosGenerales: 'No',
+      ultimaActualizacion: 'No hay',
+      descripcion: 'No existen para este año',
+      enlaceDocumento: 'no hay',
+      enlaceModificacion: 'No Hay'
+    }
+  ],
+  '2011': [
+    {
+      tipoNorma: 'Decreto',
+      denominacion: 'Tránsito y Transporte Público',
+      titulo: 'Cierre de Calle y/o Pasajes',
+      numero: 'No hay',
+      fecha: 'No Hay',
+      fechaPublicacion: 'No hay',
+      efectosGenerales: 'No',
+      ultimaActualizacion: 'No hay',
+      descripcion: 'No existen para este año',
+      enlaceDocumento: 'no hay',
+      enlaceModificacion: 'No Hay'
+    }
+  ],
+  '2010': [
+    {
+      tipoNorma: 'Decreto',
+      denominacion: 'Tránsito y Transporte Público',
+      titulo: 'Cierre de Calle y/o Pasajes',
+      numero: 'No hay',
+      fecha: 'No Hay',
+      fechaPublicacion: 'No hay',
+      efectosGenerales: 'No',
+      ultimaActualizacion: 'No hay',
+      descripcion: 'No existen para este año',
+      enlaceDocumento: 'no hay',
+      enlaceModificacion: 'No Hay'
+    }
+  ],
+  '2009': [
     {
       tipoNorma: 'Decreto',
       denominacion: 'Tránsito y Transporte Público',
@@ -45,7 +156,7 @@ export default function Seccion7_6CierreCalles({ anio, busqueda }: Seccion7_6Cie
   const registros = termino
     ? registrosAnio.filter((registro) =>
         Object.values(registro).some((valor) =>
-          normalizarTexto(valor).includes(termino)
+          normalizarTexto(String(valor ?? '')).includes(termino)
         )
       )
     : registrosAnio;
@@ -101,11 +212,25 @@ export default function Seccion7_6CierreCalles({ anio, busqueda }: Seccion7_6Cie
             </div>
             <div>
               <p className="text-xs text-slate-500">Enlace a la publicación o archivo</p>
-              <p className="mt-1 text-xs font-medium text-slate-900">{registro.enlaceDocumento}</p>
+              {registro.urlDocumento ? (
+                <PdfLinkButton href={registro.urlDocumento} ariaLabel={`Abrir PDF de cierre de calles número ${registro.numero}`} className="mt-1" />
+              ) : registro.enlaceDocumento.toLocaleLowerCase() === 'pdf' ? (
+                <PdfLinkButton ariaLabel={`Abrir PDF de cierre de calles número ${registro.numero}`} className="mt-1" />
+              ) : (
+                <p className="mt-1 text-xs font-medium text-slate-900">{registro.enlaceDocumento}</p>
+              )}
             </div>
             <div>
               <p className="text-xs text-slate-500">Enlace relacionado a la modificación</p>
-              <p className="mt-1 text-xs font-medium text-slate-900">{registro.enlaceModificacion}</p>
+              <div className="mt-1 text-xs font-medium text-slate-900">
+                {registro.urlModificacion ? (
+                  <PdfLinkButton href={registro.urlModificacion} ariaLabel={`Abrir PDF de modificación de cierre de calles número ${registro.numero}`} />
+                ) : registro.enlaceModificacion.toLocaleLowerCase() === 'pdf' ? (
+                  <PdfLinkButton ariaLabel={`Abrir PDF de modificación de cierre de calles número ${registro.numero}`} />
+                ) : (
+                  registro.enlaceModificacion
+                )}
+              </div>
             </div>
           </div>
         </article>

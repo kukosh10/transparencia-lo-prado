@@ -1,4 +1,4 @@
-import { FileText } from 'lucide-react';
+import PdfLinkButton from '../PdfLinkButton';
 
 interface Seccion7_6OrdenesDemolicionProps {
   anio: string;
@@ -17,14 +17,16 @@ export interface OrdenDemolicion {
   descripcion: string;
   modificacion: string;
   modificacionesPdf?: number;
-  urlDrive: string;
+  urlModificaciones?: string[];
+  urlDrive: string; // Aquí poner URL de Drive del PDF de publicación.
 }
 
 const crearOrden2010 = (
   numero: string,
   fecha: string,
   titulo: string,
-  descripcion: string
+  descripcion: string,
+  urlDrive = '' // Aquí va la URL de Drive del PDF de este registro.
 ): OrdenDemolicion => ({
   tipoNorma: 'Decreto',
   numero,
@@ -36,11 +38,11 @@ const crearOrden2010 = (
   ultimaActualizacion: 'Sin Modificaciones',
   descripcion,
   modificacion: 'Sin modificación',
-  urlDrive: ''
+  urlDrive
 });
 
 export const ordenesPorAnio: Record<string, OrdenDemolicion[]> = {
-  // Registros de Órdenes de Demolición correspondientes al año 2016.
+  // Aquí va la URL de Drive en urlDrive de cada registro con PDF.
   '2016': [
     {
       tipoNorma: 'Decretos Alcaldicios',
@@ -69,7 +71,7 @@ export const ordenesPorAnio: Record<string, OrdenDemolicion[]> = {
       urlDrive: ''
     }
   ],
-  // Registros de Órdenes de Demolición correspondientes al año 2015.
+  // Aquí va la URL de Drive en urlDrive de cada registro con PDF.
   '2015': [
     {
       tipoNorma: 'Decretos Alcaldicios',
@@ -202,7 +204,7 @@ export const ordenesPorAnio: Record<string, OrdenDemolicion[]> = {
       urlDrive: ''
     }
   ],
-  // Registros de Órdenes de Demolición correspondientes al año 2014.
+  // Aquí va la URL de Drive en urlDrive de cada registro con PDF.
   '2014': [
     {
       tipoNorma: 'Decreto',
@@ -231,7 +233,7 @@ export const ordenesPorAnio: Record<string, OrdenDemolicion[]> = {
       urlDrive: ''
     }
   ],
-  // Registros de Órdenes de Demolición correspondientes al año 2013.
+  // Aquí va la URL de Drive en urlDrive de cada registro con PDF.
   '2013': [
     {
       tipoNorma: 'Decreto',
@@ -299,7 +301,7 @@ export const ordenesPorAnio: Record<string, OrdenDemolicion[]> = {
       urlDrive: ''
     }
   ],
-  // Registros de Órdenes de Demolición correspondientes al año 2012.
+  // Aquí va la URL de Drive en urlDrive de cada registro con PDF.
   '2012': [
     {
       tipoNorma: 'Decreto',
@@ -339,6 +341,7 @@ export const ordenesPorAnio: Record<string, OrdenDemolicion[]> = {
       descripcion: 'DECLARA INHABILIDAD DE CONSTRUCCIÓN SIN PERMISO DE EDIFICACIÓN',
       modificacion: '',
       modificacionesPdf: 1,
+      urlModificaciones: [''], // Aquí poner URL de Drive del PDF de modificación.
       urlDrive: ''
     },
     {
@@ -353,6 +356,7 @@ export const ordenesPorAnio: Record<string, OrdenDemolicion[]> = {
       descripcion: 'DECLARA INHABILIDAD DE CONSTRUCCIÓN SIN PERMISO DE EDIFICACIÓN',
       modificacion: '',
       modificacionesPdf: 1,
+      urlModificaciones: [''], // Aquí poner URL de Drive del PDF de modificación.
       urlDrive: ''
     },
     {
@@ -380,6 +384,7 @@ export const ordenesPorAnio: Record<string, OrdenDemolicion[]> = {
       descripcion: 'OTORGA AMPLIACIÓN DE PLAZO PARA INHABILIDAD DE CONSTRUCCIONES SIN PERMISO DE EDIFICACIÓN',
       modificacion: '',
       modificacionesPdf: 2,
+      urlModificaciones: ['', ''], // Aquí poner URL de Drive de cada PDF de modificación.
       urlDrive: ''
     },
     {
@@ -394,6 +399,7 @@ export const ordenesPorAnio: Record<string, OrdenDemolicion[]> = {
       descripcion: 'OTORGA AMPLIACIÓN DE PLAZO PARA DEMOLICIONES DE CONSTRUCCIONES IRREGULARES QUE SE INDICA.',
       modificacion: '',
       modificacionesPdf: 2,
+      urlModificaciones: ['', ''], // Aquí poner URL de Drive de cada PDF de modificación.
       urlDrive: ''
     },
     {
@@ -408,6 +414,7 @@ export const ordenesPorAnio: Record<string, OrdenDemolicion[]> = {
       descripcion: 'OTORGA AMPLIACIÓN DE PLAZO PARA INHABILIDAD DE CONSTRUCCIONES SIN PERMISO DE EDIFICACIÓN',
       modificacion: '',
       modificacionesPdf: 1,
+      urlModificaciones: [''], // Aquí poner URL de Drive del PDF de modificación.
       urlDrive: ''
     },
     {
@@ -461,6 +468,7 @@ export const ordenesPorAnio: Record<string, OrdenDemolicion[]> = {
       descripcion: 'DECLARA INHABILIDAD DE LAS OBRAS SIN PERMISO DE EDIFICACIÓN Y SIN RECEPCIÓN FINAL',
       modificacion: '',
       modificacionesPdf: 1,
+      urlModificaciones: [''], // Aquí poner URL de Drive del PDF de modificación.
       urlDrive: ''
     },
     {
@@ -488,10 +496,11 @@ export const ordenesPorAnio: Record<string, OrdenDemolicion[]> = {
       descripcion: 'OTORGA AMPLIACIÓN DE PLAZO PARA DEMOLICIÓN DE CONSTRUCCIONES SIN PERMISOS DE EDIFICACIÓN',
       modificacion: '',
       modificacionesPdf: 2,
+      urlModificaciones: ['', ''], // Aquí poner URL de Drive de cada PDF de modificación.
       urlDrive: ''
     }
   ],
-  // Registros de Órdenes de Demolición correspondientes al año 2011.
+  // Aquí va la URL de Drive en urlDrive de cada registro con PDF.
   '2011': [
     {
       tipoNorma: 'Decreto',
@@ -544,6 +553,7 @@ export const ordenesPorAnio: Record<string, OrdenDemolicion[]> = {
       descripcion: 'DISPONE DEMOLICIÓN INMEDIATA DE CONSTRUCCIÓN SIN PERMISO DE EDIFICACIÓN',
       modificacion: '',
       modificacionesPdf: 2,
+      urlModificaciones: ['', ''], // Aquí poner URL de Drive de cada PDF de modificación.
       urlDrive: ''
     },
     {
@@ -558,10 +568,11 @@ export const ordenesPorAnio: Record<string, OrdenDemolicion[]> = {
       descripcion: 'ORDÉNASE LA DEMOLICIÓN INMEDIATA DE CONSTRUCCIÓN SIN PERMISO DE EDIFICACIÓN',
       modificacion: '',
       modificacionesPdf: 2,
+      urlModificaciones: ['', ''], // Aquí poner URL de Drive de cada PDF de modificación.
       urlDrive: ''
     }
   ],
-  // Registros de Órdenes de Demolición correspondientes al año 2010.
+  // Aquí va la URL de Drive en el 5.º argumento de crearOrden2010 en cada registro.
   '2010': [
     crearOrden2010('507', '15.03.10', 'Dispone Demolición Inmediata', 'DISPONE DEMOLICIÓN INMEDIATA DE INMUEBLE'),
     crearOrden2010('508', '15.03.10', 'Dispone Demolición Inmediata', 'DISPONE DEMOLICIÓN INMEDIATA DE INMUEBLE'),
@@ -605,7 +616,7 @@ export const ordenesPorAnio: Record<string, OrdenDemolicion[]> = {
     crearOrden2010('1420', '29.07.10', 'Dispone Demolición Parcial Inmediata', 'DISPONE DEMOLICIÓN PARCIAL INMEDIATA DE INMUEBLE'),
     crearOrden2010('1794', '28.09.10', 'Dispone Demolición Parcial Inmediata', 'DISPONE DEMOLICIÓN PARCIAL INMEDIATA DE PROPIEDAD')
   ],
-  // Registros de Órdenes de Demolición correspondientes al año 2009.
+  // Aquí va la URL de Drive en urlDrive de cada registro con PDF.
   '2009': [
     {
       tipoNorma: 'Decreto',
@@ -619,6 +630,7 @@ export const ordenesPorAnio: Record<string, OrdenDemolicion[]> = {
       descripcion: 'DISPONE DEMOLICIÓN INMEDIATA DE CONSTRUCCIÓN IRREGULAR INSTALADA AL COSTADO SUR PONIENTE DEL BLOCK 39 DEL ÁREA COPROPIEDAD DE VILLA SANTA ANITA.',
       modificacion: '',
       modificacionesPdf: 1,
+      urlModificaciones: [''], // Aquí poner URL de Drive del PDF de modificación.
       urlDrive: ''
     },
     {
@@ -715,33 +727,18 @@ export default function Seccion7_6OrdenesDemolicion({ anio, busqueda }: Seccion7
             </div>
             <div>
               <p className="text-xs text-slate-500">Enlace al documento</p>
-              <a
-                href={orden.urlDrive || '#'}
-                target="_blank"
-                rel="noreferrer"
-                aria-label={`Abrir PDF de la orden de demolición número ${orden.numero}`}
-                className="mt-1 inline-flex items-center gap-1.5 text-xs font-semibold text-blue-700 hover:underline"
-              >
-                <FileText className="h-4 w-4 text-red-600" />
-                Ver Archivo PDF
-              </a>
+              <PdfLinkButton href={orden.urlDrive} ariaLabel={`Abrir PDF de la orden de demolición número ${orden.numero}`} className="mt-1" />
             </div>
             <div>
               <p className="text-xs text-slate-500">Enlace relacionado a la modificación</p>
               {orden.modificacionesPdf ? (
                 <div className="mt-1 flex items-center gap-1">
-                  {Array.from({ length: orden.modificacionesPdf }, (_, indice) => (
-                    <a
-                      key={indice}
-                      href="#"
-                      target="_blank"
-                      rel="noreferrer"
-                      aria-label={`Abrir PDF de modificación ${indice + 1} del decreto ${orden.numero}`}
-                      className="inline-flex text-red-600 hover:text-red-700"
-                    >
-                      <FileText className="h-4 w-4" />
-                    </a>
-                  ))}
+                  {Array.from({ length: orden.modificacionesPdf }, (_, indice) => {
+                    const url = orden.urlModificaciones?.[indice];
+                    const ariaLabel = `Abrir PDF de modificación ${indice + 1} del decreto ${orden.numero}`;
+
+                    return <PdfLinkButton key={indice} href={url} ariaLabel={ariaLabel} />;
+                  })}
                 </div>
               ) : (
                 <p className="mt-1 text-xs font-medium text-slate-900">{orden.modificacion}</p>

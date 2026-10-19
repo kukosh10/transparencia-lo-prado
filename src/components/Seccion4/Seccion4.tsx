@@ -1,5 +1,6 @@
 import { useState } from 'react';   
-import { ChevronDown, ChevronUp, FileText, ExternalLink, ArrowLeft, User } from 'lucide-react';   
+import { ChevronDown, ChevronUp, ExternalLink, ArrowLeft, User } from 'lucide-react';
+import PdfLinkButton from '../PdfLinkButton';
   
 interface Seccion4Props {   
 onVolver: () => void;   
@@ -1379,9 +1380,7 @@ Consejeros y Representantes de la Comunidad
 <a href={unidad.fuenteLegalUrl} target="_blank" rel="noreferrer" className="text-blue-700 font-bold hover:underline text-xs text-center">   
 Enlace Ley 18.695   
 </a>   
-<a href={unidad.fuenteLegalUrl} target="_blank" rel="noreferrer" className="p-2.5 bg-red-50 hover:bg-red-100 rounded-xl border border-red-200 transition-colors flex items-center justify-center mt-1">   
-<FileText className="w-6 h-6 text-red-600" />   
-</a>   
+<PdfLinkButton href={unidad.fuenteLegalUrl} ariaLabel="Abrir archivo PDF" />
 </div>   
 </div>   
 </div>   
@@ -1483,9 +1482,7 @@ className="p-4 flex items-center justify-between gap-4 cursor-pointer bg-slate-5
 </div>   
 <div className="bg-white p-4 rounded-lg border border-slate-200 flex items-center justify-between">   
 <span className="font-bold text-slate-900 text-xs">Reglamento Interno</span>   
-<a href={unidad.reglamentoInternoUrl} target="_blank" rel="noreferrer" className="p-2.5 bg-red-50 hover:bg-red-100 rounded-xl border border-red-200 transition-colors flex items-center justify-center">   
-<FileText className="w-5 h-5 text-red-600" />   
-</a>   
+<PdfLinkButton href={unidad.reglamentoInternoUrl} ariaLabel="Abrir archivo PDF" />
 </div>   
 </div>   
   
@@ -1510,9 +1507,7 @@ className="p-4 flex items-center justify-between gap-4 cursor-pointer bg-slate-5
 <div className="md:col-span-2 space-y-1.5 text-center">   
 <span className="font-bold text-slate-900 block text-xs">Enlace Archivo:</span>   
 <div className="flex justify-center pt-2">   
-<a href={unidad.fuenteLegalUrl} target="_blank" rel="noreferrer" className="p-3 bg-red-50 hover:bg-red-100 rounded-xl border border-red-200 transition-colors flex items-center justify-center">   
-<FileText className="w-6 h-6 text-red-600" />   
-</a>   
+<PdfLinkButton href={unidad.fuenteLegalUrl} ariaLabel="Abrir archivo PDF" />
 </div>   
 </div>   
 </div>   
@@ -1598,9 +1593,7 @@ className="p-4 flex items-center justify-between gap-4 cursor-pointer bg-slate-5
 </div>   
 <div className="bg-white p-4 rounded-lg border border-slate-200 flex items-center justify-between">   
 <span className="font-bold text-slate-900 text-xs">Reglamento Interno</span>   
-<a href={unidad.fuenteLegalUrl} target="_blank" rel="noreferrer" className="p-2.5 bg-red-50 hover:bg-red-100 rounded-xl border border-red-200 transition-colors flex items-center justify-center">   
-<FileText className="w-5 h-5 text-red-600" />   
-</a>   
+<PdfLinkButton href={unidad.fuenteLegalUrl} ariaLabel="Abrir archivo PDF" />
 </div>   
 </div>   
   
@@ -1625,9 +1618,7 @@ className="p-4 flex items-center justify-between gap-4 cursor-pointer bg-slate-5
 <div className="md:col-span-2 space-y-1.5 text-center">   
 <span className="font-bold text-slate-900 block text-xs">Enlace Archivo:</span>   
 <div className="flex justify-center pt-2">   
-<a href={unidad.fuenteLegalUrl} target="_blank" rel="noreferrer" className="p-3 bg-red-50 hover:bg-red-100 rounded-xl border border-red-200 transition-colors flex items-center justify-center">   
-<FileText className="w-6 h-6 text-red-600" />   
-</a>   
+<PdfLinkButton href={unidad.fuenteLegalUrl} ariaLabel="Abrir archivo PDF" />
 </div>   
 </div>   
 </div>   
@@ -1713,9 +1704,7 @@ className="p-4 flex items-center justify-between gap-4 cursor-pointer bg-slate-5
 </div>   
 <div className="bg-white p-4 rounded-lg border border-slate-200 flex items-center justify-between">   
 <span className="font-bold text-slate-900 text-xs">Reglamento Interno</span>   
-<a href={unidad.reglamentoInternoUrl} target="_blank" rel="noreferrer" className="p-2.5 bg-red-50 hover:bg-red-100 rounded-xl border border-red-200 transition-colors flex items-center justify-center">   
-<FileText className="w-5 h-5 text-red-600" />   
-</a>   
+<PdfLinkButton href={unidad.reglamentoInternoUrl} ariaLabel="Abrir archivo PDF" />
 </div>   
 </div>   
   
@@ -1740,9 +1729,7 @@ className="p-4 flex items-center justify-between gap-4 cursor-pointer bg-slate-5
 <div className="md:col-span-2 space-y-1.5 text-center">   
 <span className="font-bold text-slate-900 block text-xs">Enlace Archivo:</span>   
 <div className="flex justify-center pt-2">   
-<a href={unidad.fuenteLegalUrl} target="_blank" rel="noreferrer" className="p-3 bg-red-50 hover:bg-red-100 rounded-xl border border-red-200 transition-colors flex items-center justify-center">   
-<FileText className="w-6 h-6 text-red-600" />   
-</a>   
+<PdfLinkButton href={unidad.fuenteLegalUrl} ariaLabel="Abrir archivo PDF" />
 </div>   
 </div>   
 </div>   
@@ -1828,9 +1815,7 @@ className="p-4 flex items-center justify-between gap-4 cursor-pointer bg-slate-5
 </div>   
 <div className="bg-white p-4 rounded-lg border border-slate-200 flex items-center justify-between">   
 <span className="font-bold text-slate-900 text-xs">Reglamento Interno</span>   
-<a href={unidad.reglamentoInternoUrl} target="_blank" rel="noreferrer" className="p-2.5 bg-red-50 hover:bg-red-100 rounded-xl border border-red-200 transition-colors flex items-center justify-center">   
-<FileText className="w-5 h-5 text-red-600" />   
-</a>   
+<PdfLinkButton href={unidad.reglamentoInternoUrl} ariaLabel="Abrir archivo PDF" />
 </div>   
 </div>   
   
@@ -1855,9 +1840,7 @@ className="p-4 flex items-center justify-between gap-4 cursor-pointer bg-slate-5
 <div className="md:col-span-2 space-y-1.5 text-center">   
 <span className="font-bold text-slate-900 block text-xs">Enlace Archivo:</span>   
 <div className="flex justify-center pt-2">   
-<a href={unidad.fuenteLegalUrl} target="_blank" rel="noreferrer" className="p-3 bg-red-50 hover:bg-red-100 rounded-xl border border-red-200 transition-colors flex items-center justify-center">   
-<FileText className="w-6 h-6 text-red-600" />   
-</a>   
+<PdfLinkButton href={unidad.fuenteLegalUrl} ariaLabel="Abrir archivo PDF" />
 </div>   
 </div>   
 </div>   
@@ -1943,9 +1926,7 @@ className="p-4 flex items-center justify-between gap-4 cursor-pointer bg-slate-5
 </div>   
 <div className="bg-white p-4 rounded-lg border border-slate-200 flex items-center justify-between">   
 <span className="font-bold text-slate-900 text-xs">Reglamento Interno</span>   
-<a href={unidad.reglamentoInternoUrl} target="_blank" rel="noreferrer" className="p-2.5 bg-red-50 hover:bg-red-100 rounded-xl border border-red-200 transition-colors flex items-center justify-center">   
-<FileText className="w-5 h-5 text-red-600" />   
-</a>   
+<PdfLinkButton href={unidad.reglamentoInternoUrl} ariaLabel="Abrir archivo PDF" />
 </div>   
 </div>   
   
@@ -1970,9 +1951,7 @@ className="p-4 flex items-center justify-between gap-4 cursor-pointer bg-slate-5
 <div className="md:col-span-2 space-y-1.5 text-center">   
 <span className="font-bold text-slate-900 block text-xs">Enlace Archivo:</span>   
 <div className="flex justify-center pt-2">   
-<a href={unidad.fuenteLegalUrl} target="_blank" rel="noreferrer" className="p-3 bg-red-50 hover:bg-red-100 rounded-xl border border-red-200 transition-colors flex items-center justify-center">   
-<FileText className="w-6 h-6 text-red-600" />   
-</a>   
+<PdfLinkButton href={unidad.fuenteLegalUrl} ariaLabel="Abrir archivo PDF" />
 </div>   
 </div>   
 </div>   
@@ -2021,9 +2000,7 @@ className="p-4 flex items-center justify-between gap-4 cursor-pointer bg-slate-5
 </div>   
 <div className="bg-white p-4 rounded-lg border border-slate-200 flex items-center justify-between">   
 <span className="font-bold text-slate-900 text-xs">Reglamento Interno</span>   
-<a href={unidad.reglamentoInternoUrl} target="_blank" rel="noreferrer" className="p-2.5 bg-red-50 hover:bg-red-100 rounded-xl border border-red-200 transition-colors flex items-center justify-center">   
-<FileText className="w-5 h-5 text-red-600" />   
-</a>   
+<PdfLinkButton href={unidad.reglamentoInternoUrl} ariaLabel="Abrir archivo PDF" />
 </div>   
 </div>   
   
@@ -2048,9 +2025,7 @@ className="p-4 flex items-center justify-between gap-4 cursor-pointer bg-slate-5
 <div className="md:col-span-2 space-y-1.5 text-center">   
 <span className="font-bold text-slate-900 block text-xs">Enlace Archivo:</span>   
 <div className="flex justify-center pt-2">   
-<a href={unidad.fuenteLegalUrl} target="_blank" rel="noreferrer" className="p-3 bg-red-50 hover:bg-red-100 rounded-xl border border-red-200 transition-colors flex items-center justify-center">   
-<FileText className="w-6 h-6 text-red-600" />   
-</a>   
+<PdfLinkButton href={unidad.fuenteLegalUrl} ariaLabel="Abrir archivo PDF" />
 </div>   
 </div>   
 </div>   
@@ -2136,9 +2111,7 @@ className="p-4 flex items-center justify-between gap-4 cursor-pointer bg-slate-5
 </div>   
 <div className="bg-white p-4 rounded-lg border border-slate-200 flex items-center justify-between">   
 <span className="font-bold text-slate-900 text-xs">Reglamento Interno</span>   
-<a href={unidad.reglamentoInternoUrl} target="_blank" rel="noreferrer" className="p-2.5 bg-red-50 hover:bg-red-100 rounded-xl border border-red-200 transition-colors flex items-center justify-center">   
-<FileText className="w-5 h-5 text-red-600" />   
-</a>   
+<PdfLinkButton href={unidad.reglamentoInternoUrl} ariaLabel="Abrir archivo PDF" />
 </div>   
 </div>   
   
@@ -2163,9 +2136,7 @@ className="p-4 flex items-center justify-between gap-4 cursor-pointer bg-slate-5
 <div className="md:col-span-2 space-y-1.5 text-center">   
 <span className="font-bold text-slate-900 block text-xs">Enlace Archivo:</span>   
 <div className="flex justify-center pt-2">   
-<a href={unidad.fuenteLegalUrl} target="_blank" rel="noreferrer" className="p-3 bg-red-50 hover:bg-red-100 rounded-xl border border-red-200 transition-colors flex items-center justify-center">   
-<FileText className="w-6 h-6 text-red-600" />   
-</a>   
+<PdfLinkButton href={unidad.fuenteLegalUrl} ariaLabel="Abrir archivo PDF" />
 </div>   
 </div>   
 </div>   
@@ -2310,9 +2281,7 @@ className="p-4 flex items-center justify-between gap-4 cursor-pointer bg-slate-5
 </div>   
 <div className="bg-white p-4 rounded-lg border border-slate-200 flex items-center justify-between">   
 <span className="font-bold text-slate-900 text-xs">Reglamento Interno</span>   
-<a href={unidad.reglamentoInternoUrl} target="_blank" rel="noreferrer" className="p-2.5 bg-red-50 hover:bg-red-100 rounded-xl border border-red-200 transition-colors flex items-center justify-center">   
-<FileText className="w-5 h-5 text-red-600" />   
-</a>   
+<PdfLinkButton href={unidad.reglamentoInternoUrl} ariaLabel="Abrir archivo PDF" />
 </div>   
 </div>   
   
@@ -2337,9 +2306,7 @@ className="p-4 flex items-center justify-between gap-4 cursor-pointer bg-slate-5
 <div className="md:col-span-2 space-y-1.5 text-center">   
 <span className="font-bold text-slate-900 block text-xs">Enlace Archivo:</span>   
 <div className="flex justify-center pt-2">   
-<a href={unidad.fuenteLegalUrl} target="_blank" rel="noreferrer" className="p-3 bg-red-50 hover:bg-red-100 rounded-xl border border-red-200 transition-colors flex items-center justify-center">   
-<FileText className="w-6 h-6 text-red-600" />   
-</a>   
+<PdfLinkButton href={unidad.fuenteLegalUrl} ariaLabel="Abrir archivo PDF" />
 </div>   
 </div>   
 </div>   
@@ -2481,9 +2448,7 @@ className="p-4 flex items-center justify-between gap-4 cursor-pointer bg-slate-5
 </div>   
 <div className="bg-white p-4 rounded-lg border border-slate-200 flex items-center justify-between">   
 <span className="font-bold text-slate-900 text-xs">Reglamento Interno</span>   
-<a href={unidad.reglamentoInternoUrl} target="_blank" rel="noreferrer" className="p-2.5 bg-red-50 hover:bg-red-100 rounded-xl border border-red-200 transition-colors flex items-center justify-center">   
-<FileText className="w-5 h-5 text-red-600" />   
-</a>   
+<PdfLinkButton href={unidad.reglamentoInternoUrl} ariaLabel="Abrir archivo PDF" />
 </div>   
 </div>   
   
@@ -2511,9 +2476,7 @@ className="p-4 flex items-center justify-between gap-4 cursor-pointer bg-slate-5
 <a href={unidad.fuenteLegalUrl} target="_blank" rel="noreferrer" className="text-blue-700 font-bold hover:underline text-xs text-center">   
 Enlace Ley 18.695   
 </a>   
-<a href={unidad.fuenteLegalUrl} target="_blank" rel="noreferrer" className="p-2.5 bg-red-50 hover:bg-red-100 rounded-xl border border-red-200 transition-colors flex items-center justify-center mt-1">   
-<FileText className="w-6 h-6 text-red-600" />   
-</a>   
+<PdfLinkButton href={unidad.fuenteLegalUrl} ariaLabel="Abrir archivo PDF" />
 </div>   
 </div>   
 </div>   
@@ -2655,9 +2618,7 @@ className="p-4 flex items-center justify-between gap-4 cursor-pointer bg-slate-5
 </div>   
 <div className="bg-white p-4 rounded-lg border border-slate-200 flex items-center justify-between">   
 <span className="font-bold text-slate-900 text-xs">Reglamento Interno</span>   
-<a href={unidad.reglamentoInternoUrl} target="_blank" rel="noreferrer" className="p-2.5 bg-red-50 hover:bg-red-100 rounded-xl border border-red-200 transition-colors flex items-center justify-center">   
-<FileText className="w-5 h-5 text-red-600" />   
-</a>   
+<PdfLinkButton href={unidad.reglamentoInternoUrl} ariaLabel="Abrir archivo PDF" />
 </div>   
 </div>   
   
@@ -2685,9 +2646,7 @@ className="p-4 flex items-center justify-between gap-4 cursor-pointer bg-slate-5
 <a href={unidad.fuenteLegalUrl} target="_blank" rel="noreferrer" className="text-blue-700 font-bold hover:underline text-xs text-center">   
 Enlace Ley 18.695   
 </a>   
-<a href={unidad.fuenteLegalUrl} target="_blank" rel="noreferrer" className="p-2.5 bg-red-50 hover:bg-red-100 rounded-xl border border-red-200 transition-colors flex items-center justify-center mt-1">   
-<FileText className="w-6 h-6 text-red-600" />   
-</a>   
+<PdfLinkButton href={unidad.fuenteLegalUrl} ariaLabel="Abrir archivo PDF" />
 </div>   
 </div>   
 </div>   
@@ -2829,9 +2788,7 @@ className="p-4 flex items-center justify-between gap-4 cursor-pointer bg-slate-5
 </div>   
 <div className="bg-white p-4 rounded-lg border border-slate-200 flex items-center justify-between">   
 <span className="font-bold text-slate-900 text-xs">Reglamento Interno</span>   
-<a href={unidad.reglamentoInternoUrl} target="_blank" rel="noreferrer" className="p-2.5 bg-red-50 hover:bg-red-100 rounded-xl border border-red-200 transition-colors flex items-center justify-center">   
-<FileText className="w-5 h-5 text-red-600" />   
-</a>   
+<PdfLinkButton href={unidad.reglamentoInternoUrl} ariaLabel="Abrir archivo PDF" />
 </div>   
 </div>   
   

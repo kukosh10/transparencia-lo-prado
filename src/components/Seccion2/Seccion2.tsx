@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ChevronRight, ChevronDown, FileText, Globe, Search, ArrowLeft } from 'lucide-react';
+import { ChevronRight, ChevronDown, Globe, Search, ArrowLeft } from 'lucide-react';
+import PdfLinkButton from '../PdfLinkButton';
 
 interface Seccion2Props {
   onVolver: () => void;
@@ -742,24 +743,19 @@ export default function Seccion2({ onVolver }: Seccion2Props) {
                         </div>
                         <div>
                           <span className="block text-slate-400 font-medium mb-1">Enlace al documento:</span>
-                          <a
-                            href={norma.url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center gap-1.5 font-bold text-blue-600 hover:underline"
-                          >
-                            {norma.tipoEnlace === 'pdf' ? (
-                              <>
-                                <FileText className="w-4 h-4 text-red-600" />
-                                <span>Ver Archivo PDF</span>
-                              </>
-                            ) : (
-                              <>
-                                <Globe className="w-4 h-4 text-blue-600" />
-                                <span>Ver Enlace Web</span>
-                              </>
-                            )}
-                          </a>
+                          {norma.tipoEnlace === 'pdf' ? (
+                            <PdfLinkButton href={norma.url} ariaLabel={`Abrir PDF de ${norma.nombre}`} />
+                          ) : (
+                            <a
+                              href={norma.url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center gap-1.5 font-bold text-blue-600 hover:underline"
+                            >
+                              <Globe className="w-4 h-4 text-blue-600" />
+                              <span>Ver Enlace Web</span>
+                            </a>
+                          )}
                         </div>
                       </div>
                     )}

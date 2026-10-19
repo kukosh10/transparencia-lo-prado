@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ChevronDown, ChevronUp, FileText, ArrowLeft } from 'lucide-react';
+import { ChevronDown, ChevronUp, ArrowLeft } from 'lucide-react';
+import PdfLinkButton from '../PdfLinkButton';
 
 interface Seccion7_1Props {
   onVolver: () => void;
@@ -410,16 +411,10 @@ export default function Seccion7_1({ onVolver }: Seccion7_1Props) {
                 <div className="p-6 border-t border-slate-100 bg-white space-y-4 rounded-b-xl">
                   <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
                     {item.documentos.map((doc, idx) => (
-                      <a
-                        key={idx}
-                        href={doc.url || '#'}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="p-3 bg-slate-50 hover:bg-blue-50/60 rounded-lg border border-slate-200 hover:border-blue-200 transition-all flex items-center justify-between group text-xs font-medium text-slate-700"
-                      >
-                        <span className="truncate pr-2">{doc.nombre}</span>
-                        <FileText className="w-4 h-4 text-red-600 group-hover:scale-110 transition-transform shrink-0" />
-                      </a>
+                      <div key={idx} className="flex flex-wrap items-center justify-between gap-2 rounded-lg border border-slate-200 bg-white p-3">
+                        <span className="truncate pr-2 text-xs font-medium text-slate-700">{doc.nombre}</span>
+                        <PdfLinkButton href={doc.url} ariaLabel={`Abrir ${doc.nombre}`} />
+                      </div>
                     ))}
                   </div>
                 </div>

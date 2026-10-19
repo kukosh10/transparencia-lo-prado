@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ChevronDown, ChevronUp, FileText, ArrowLeft } from 'lucide-react';
+import { ChevronDown, ChevronUp, ArrowLeft } from 'lucide-react';
+import PdfLinkButton from '../PdfLinkButton';
 
 interface Seccion7_4Props {
   onVolver: () => void;
@@ -75,15 +76,7 @@ export default function Seccion7_4({ onVolver }: Seccion7_4Props) {
               {isOpen && (
                 <div className="p-6 border-t border-slate-100 bg-white space-y-4 rounded-b-xl">
                   <div className="max-w-xs">
-                    <a
-                      href={item.url || '#'}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="p-3 bg-slate-50 hover:bg-blue-50/60 rounded-lg border border-slate-200 hover:border-blue-200 transition-all flex items-center justify-between group text-xs font-medium text-slate-700"
-                    >
-                      <span>Cuenta Pública {item.anio}</span>
-                      <FileText className="w-4 h-4 text-red-600 group-hover:scale-110 transition-transform" />
-                    </a>
+                    <PdfLinkButton href={item.url} ariaLabel={`Abrir Cuenta Pública ${item.anio}`} />
                   </div>
                 </div>
               )}

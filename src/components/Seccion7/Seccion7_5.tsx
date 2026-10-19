@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ChevronDown, ChevronUp, FileText, ArrowLeft } from 'lucide-react';
+import { ChevronDown, ChevronUp, ArrowLeft } from 'lucide-react';
+import PdfLinkButton from '../PdfLinkButton';
 
 interface Seccion7_5Props {
   onVolver: () => void;
@@ -499,31 +500,17 @@ export default function Seccion7_5({ onVolver }: Seccion7_5Props) {
                                       <div className="pt-2 flex items-center gap-2 flex-wrap">
                                         <span className="text-[11px] font-medium text-slate-500">Modificaciones:</span>
                                         {item.modificaciones.map((mod, modIdx) => (
-                                          <a
-                                            key={modIdx}
-                                            href={mod.url || '#'}
-                                            target="_blank"
-                                            rel="noreferrer"
-                                            className="inline-flex items-center gap-1 px-2 py-0.5 bg-red-50 text-red-700 text-[11px] font-medium rounded border border-red-100 hover:bg-red-100 transition-colors"
-                                          >
-                                            <FileText className="w-3 h-3 text-red-600" />
-                                            <span>{mod.nombre}</span>
-                                          </a>
+                                          <span key={modIdx} className="inline-flex items-center gap-2">
+                                            <span className="text-[11px] font-medium text-slate-700">{mod.nombre}</span>
+                                            <PdfLinkButton href={mod.url} ariaLabel={`Abrir PDF ${mod.nombre}`} />
+                                          </span>
                                         ))}
                                       </div>
                                     )}
                                   </div>
 
                                   <div className="shrink-0 w-full md:w-auto flex justify-end">
-                                    <a
-                                      href={item.urlDocumento || '#'}
-                                      target="_blank"
-                                      rel="noreferrer"
-                                      className="px-3 py-2 bg-white hover:bg-blue-50 text-blue-700 text-xs font-semibold rounded-lg border border-slate-200 hover:border-blue-200 transition-all flex items-center gap-2 shadow-2xs group"
-                                    >
-                                      <span>Ver PDF</span>
-                                      <FileText className="w-4 h-4 text-red-600 group-hover:scale-110 transition-transform" />
-                                    </a>
+                                    <PdfLinkButton href={item.urlDocumento} ariaLabel={`Abrir PDF de ${item.titulo}`} />
                                   </div>
                                 </div>
                               ))}

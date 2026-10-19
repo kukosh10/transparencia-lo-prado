@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ChevronRight, Search, FileText, Download, ExternalLink, ChevronDown } from 'lucide-react';
+import { ChevronRight, Search, ExternalLink, ChevronDown } from 'lucide-react';
+import PdfLinkButton from '../PdfLinkButton';
 import { ArrowLeft } from 'lucide-react';
 
 interface Seccion1Props {
@@ -525,9 +526,8 @@ export default function Seccion1({ onVolver }: Seccion1Props) {
 
                       <div>
                         <span className="font-semibold text-slate-900 block mb-1">Publicación Diario Oficial:</span>
-                        <a href={item.enlaceDOUrl} target="_blank" rel="noreferrer" className="text-blue-600 hover:underline flex items-center gap-1 font-medium">
-                          <FileText className="w-3.5 h-3.5" /> {item.fechaPublicacionDO} (Drive PDF)
-                        </a>
+                        <p className="mb-1 text-xs text-slate-600">{item.fechaPublicacionDO}</p>
+                        <PdfLinkButton href={item.enlaceDOUrl} ariaLabel={`Abrir publicación del Diario Oficial de ${item.nombreTitulo}`} />
                       </div>
 
                       <div>
@@ -549,9 +549,7 @@ export default function Seccion1({ onVolver }: Seccion1Props) {
                       <div>
                         <span className="font-semibold text-slate-900 block mb-1">Documento Modificatorio:</span>
                         {item.enlaceModificacionPdfUrl && item.enlaceModificacionPdfUrl !== '#' ? (
-                          <a href={item.enlaceModificacionPdfUrl} target="_blank" rel="noreferrer" className="text-blue-600 hover:underline flex items-center gap-1 font-medium">
-                            <Download className="w-3.5 h-3.5" /> Ver PDF (Drive)
-                          </a>
+                          <PdfLinkButton href={item.enlaceModificacionPdfUrl} ariaLabel={`Abrir PDF de modificación de ${item.nombreTitulo}`} />
                         ) : (
                           <span className="text-slate-400 italic">Sin modificaciones</span>
                         )}
