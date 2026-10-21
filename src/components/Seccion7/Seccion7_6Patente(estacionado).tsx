@@ -1,0 +1,210 @@
+import type { PatenteHistorico } from './Seccion7_6Patentes';
+
+interface FilaEstacionado {
+  numero: string;
+  fecha: string;
+  fechaPublicacion: string;
+  descripcion: string;
+  tieneEfectosGenerales?: string;
+  ultimaActualizacion?: string;
+  enlaceModificacion?: string;
+  tipoNorma?: string;
+  denominacion?: string;
+  nombreTitulo?: string;
+}
+
+const crearPermisosEstacionado = (filas: FilaEstacionado[]): PatenteHistorico[] =>
+  filas.map(({
+    numero,
+    fecha,
+    fechaPublicacion,
+    descripcion,
+    tieneEfectosGenerales = 'Sí',
+    ultimaActualizacion = 'Sin Modificaciones',
+    enlaceModificacion = 'Sin Modificaciones',
+    tipoNorma = 'Decreto',
+    denominacion = 'Patentes y Permisos',
+    nombreTitulo = 'Permiso Estacionado'
+  }) => ({
+    tipoNorma,
+    denominacion,
+    nombreTitulo,
+    numero,
+    fecha,
+    fechaPublicacion,
+    tieneEfectosGenerales,
+    ultimaActualizacion,
+    descripcion,
+    enlacePublicacion: 'PDF',
+    enlaceModificacion,
+    urlPublicacion: '',
+    urlModificacion: ''
+  }));
+
+export const permisosEstacionadoPorAnio: Record<string, PatenteHistorico[]> = {
+  '2016': crearPermisosEstacionado([
+    { numero: '1327', fecha: '13.05.2016', fechaPublicacion: '03.06.2016, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO AL SR. JOSE GRANDON VALDEBENITO.', tipoNorma: 'Decretos Exentos' },
+    { numero: '1327', fecha: '13.05.2016', fechaPublicacion: '20.06.2016, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO AL SR. JOSE GRANDON VALDEBENITO.', tipoNorma: 'Decretos Exentos' },
+    { numero: '1102', fecha: '19.04.2016', fechaPublicacion: '05.05.2016, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO EN LA VIA PUBLICA A LA SRA. NATHALY GUERRA MARTINEZ.', tipoNorma: 'Decretos Exentos' },
+    { numero: '1074', fecha: '15.04.2016', fechaPublicacion: '05.05.2016, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO AL SR. BERNARDO GALLARDO MUÑOZ.', tipoNorma: 'Decretos Exentos' },
+    { numero: '945', fecha: '05.04.2016', fechaPublicacion: '05.05.2016, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO A LA SRA. CYNTHIA BOLBARAN SANCHEZ.', tipoNorma: 'Decretos Exentos' },
+    { numero: '180', fecha: '19.01.2016', fechaPublicacion: '05.02.2016, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO EN FERIAS LIBRES A LA SRA. GIOVANNA GONZALEZ ALVAREZ.', tipoNorma: 'Decretos Exentos' }
+  ]),
+  '2010': crearPermisosEstacionado([
+    { numero: '599', fecha: '25.03.2010', fechaPublicacion: '29.04.2013, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO A LA SRA. REYES MUÑOZ.' },
+    { numero: '972', fecha: '19.05.2010', fechaPublicacion: '29.04.2013, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO AL SR. JORGE GASTAÑADUI CALIXTO.' },
+    { numero: '1307', fecha: '07.07.2010', fechaPublicacion: '29.04.2013, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO AL SR. BENDELIN RUIZ BARRIA.' },
+    { numero: '1469', fecha: '06.08.2010', fechaPublicacion: '29.04.2013, Página Web', descripcion: 'OTORGA PERMISO DE ESTACIONADO A LA COMERCIALIZADORA BETSABE GONZALEZ MARTINEZ E.I.R.L.' },
+    { numero: '1472', fecha: '06.08.2010', fechaPublicacion: '29.04.2013, Página Web', descripcion: 'OTORGA PERMISO DE ESTACIONADO AL SR. CLAUDIO SILVA BASCUÑAN.' },
+    { numero: '1510', fecha: '11.08.2010', fechaPublicacion: '29.04.2013, Página Web', descripcion: 'OTORGA PERMISO CARRO ISOTERMICO ESTACIONADO A LA SRA. MARCIA MONTENEGRO GODOY.' },
+    { numero: '1617', fecha: '30.08.2010', fechaPublicacion: '29.04.2013, Página Web', descripcion: 'OTORGA PERMISO CARRO ISOTERMICO ESTACIONADO A LA SRA. ROCIO RODRIGUEZ ARROYO.' },
+    { numero: '1619', fecha: '30.08.2010', fechaPublicacion: '29.04.2013, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO A LA SRA. ERIKA FRITIS MADRID.' },
+    { numero: '1623', fecha: '31.08.2010', fechaPublicacion: '29.04.2013, Página Web', descripcion: 'OTORGA PERMISO CARRO ISOTERMICO ESTACIONADO A LA SRA. MARIA GUTIERREZ SAN JUAN.' },
+    { numero: '1781', fecha: '24.09.2010', fechaPublicacion: '29.04.2013, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO A LA SRA. MYRIAM OYARCE ORTIZ.' },
+    { numero: '1957', fecha: '28.10.2010', fechaPublicacion: '29.04.2013, Página Web', descripcion: 'CADUCA Y ELIMINA PERMISO ESTACIONADO DE CARRO ISOTERMICO ROL N° 280163 A NOMBRE DE LA SRA. MARGARITA RAMIREZ JIMENEZ.', nombreTitulo: 'Elimina, Devuelve, Caduca y Anula' },
+    { numero: '2037', fecha: '12.11.2010', fechaPublicacion: '29.04.2013, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO AL SR. JOSE ANTONIO SALAZAR ROJAS.' },
+    { numero: '2040', fecha: '12.11.2010', fechaPublicacion: '29.04.2013, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO A LA SRA. JULIA SOTO ARRIAZA.' },
+    { numero: '2041', fecha: '12.11.2010', fechaPublicacion: '29.04.2013, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO AL SR. FRANCISCO JAVIER PEREZ SANCHEZ.' },
+    { numero: '2052', fecha: '17.11.2010', fechaPublicacion: '29.04.2013, Página Web', descripcion: 'OTORGA PERMISO DE ESTACIONADO A LA SRA. MARIA DEL CARMEN FLORES FIGUEROA.', enlaceModificacion: 'Sin enlace' },
+    { numero: '2257', fecha: '23.12.2010', fechaPublicacion: '29.04.2013, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO AL SR. RENE RIQUELME FLORES.' },
+    { numero: '2268', fecha: '23.12.2010', fechaPublicacion: '29.04.2013, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO EN FERIAS LIBRES AL SR. CLEMENTE VALENZUELA GUAJARDO.' }
+  ].map((registro) => ({ ...registro, enlaceModificacion: registro.enlaceModificacion ?? 'Sin enlace' }))),
+  '2009': crearPermisosEstacionado([
+    { numero: '305', fecha: '02.02.2009', fechaPublicacion: '29.04.2013, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO A LA SRA. LAURA VENEGAS RIQUELME.' },
+    { numero: '498', fecha: '03.03.2009', fechaPublicacion: '29.04.2013, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO AL SR. LUIS CABEZAS ARAYA.' },
+    { numero: '582', fecha: '16.03.2009', fechaPublicacion: '29.04.2013, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO A LA SRA. MARIA COSTILLA MISAHUAMAN.' },
+    { numero: '1414', fecha: '13.07.2009', fechaPublicacion: '29.04.2013, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO A LA SRA. NOLCA ALVAREZ MAZZOLO.' },
+    { numero: '1434', fecha: '13.07.2009', fechaPublicacion: '29.04.2013, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO DE CARRO ISOTERMICO A LA SRA. MARGARITA RAMIREZ JIMENEZ.' },
+    { numero: '1540', fecha: '24.07.2009', fechaPublicacion: '29.04.2013, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO A LA SRA. YENIFER SEPULVEDA LEON.' },
+    { numero: '1609', fecha: '03.08.2009', fechaPublicacion: '29.04.2013, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO DE CARRO ISOTERMICO A LA SRA. ANA SEPULVEDA ANDRADE.' },
+    { numero: '1773', fecha: '19.08.2009', fechaPublicacion: '29.04.2013, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO EN FERIAS LIBRES A LA SRA. ELSA QUEVEDO ALVAREZ.' },
+    { numero: '2648', fecha: '31.12.2009', fechaPublicacion: '29.04.2013, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO AL SR. HECTOR SALINAS SALAZAR.' },
+    { numero: '2649', fecha: '31.12.2009', fechaPublicacion: '29.04.2013, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO A LA SRA. MARTA MORALES ROZAS.' }
+  ].map((registro) => ({ ...registro, enlaceModificacion: 'Sin enlace' }))),
+  '2011': crearPermisosEstacionado([
+    { numero: '115', fecha: '14.01.2011', fechaPublicacion: '29.04.2013, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO A LA SRA. JACQUELINE LIZAMA HERNANDEZ.' },
+    { numero: '402', fecha: '24.02.2011', fechaPublicacion: '29.04.2013, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO A LA SRA. MIRSA CASTILLO CANALES.' },
+    { numero: '403', fecha: '24.02.2011', fechaPublicacion: '29.04.2013, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO A LA SRA. TERESA ARANCIBIA TRAYOL.' },
+    { numero: '404', fecha: '24.02.2011', fechaPublicacion: '29.04.2013, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO A LA SRA. MARIBEL TAPIA AHUMADA.' },
+    { numero: '405', fecha: '24.02.2011', fechaPublicacion: '29.04.2013, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO A LA SRA. MARIA BENAVIDES LIZANA.' },
+    { numero: '406', fecha: '24.02.2011', fechaPublicacion: '29.04.2013, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO A LA SRA. LILIANA QUINTEROS FUENTES.' },
+    { numero: '407', fecha: '24.02.2011', fechaPublicacion: '29.04.2013, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO A LA SRA. DAYANA ARIAS VALENZUELA.' },
+    { numero: '408', fecha: '24.02.2011', fechaPublicacion: '29.04.2013, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO A LA SRA. SAAVEDRA AGUILERA.' },
+    { numero: '409', fecha: '24.02.2011', fechaPublicacion: '29.04.2013, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO A LA SRA. CLEMENTINA CID CID.' },
+    { numero: '416', fecha: '24.02.2011', fechaPublicacion: '29.04.2013, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO DE CARRO ISOTERMICO A LA SRA. MARIA SANDOVAL VERA.' },
+    { numero: '434', fecha: '25.02.2011', fechaPublicacion: '29.04.2013, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO DE CARRO ISOTERMICO A LA SRA. CRISTINA VARGAS ROJAS.' },
+    { numero: '501', fecha: '10.03.2011', fechaPublicacion: '29.04.2013, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO A LA SRA. ANA ABURTO CRUZ.' },
+    { numero: '583', fecha: '22.03.2011', fechaPublicacion: '29.04.2013, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO A LA SRA. MIRTHA SEPULVEDA FLORES.' },
+    { numero: '584', fecha: '22.03.2011', fechaPublicacion: '29.04.2013, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO AL SR. JOSE GUAJARDO ARAVENA.' },
+    { numero: '585', fecha: '22.03.2011', fechaPublicacion: '29.04.2013, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO A LA SRA. MARIA VALENZUELA NAVARRETE.' },
+    { numero: '586', fecha: '22.03.2011', fechaPublicacion: '29.04.2013, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO A LA SRA. CECILIA BARRERA SOZA.' },
+    { numero: '587', fecha: '22.03.2011', fechaPublicacion: '29.04.2013, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO A LA SRA. PAMELA PEREZ TAPIA.' },
+    { numero: '588', fecha: '22.03.2011', fechaPublicacion: '29.04.2013, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO AL SR. ROLANDO CARES MARDONES.' },
+    { numero: '770', fecha: '11.04.2011', fechaPublicacion: '29.04.2013, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO AL SR. SERGIO GUMERA DIAZ.' },
+    { numero: '875', fecha: '27.04.2011', fechaPublicacion: '29.04.2013, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO A LA SRA. ELSA ACEVEDO PALMA.' },
+    { numero: '1035', fecha: '23.05.2011', fechaPublicacion: '29.04.2013, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO AL SR. RAMON VERGARA ALVAREZ.' },
+    { numero: '1146', fecha: '02.06.2011', fechaPublicacion: '29.04.2013, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO DE CARRO ISOTERMICO A LA SRA. ELOISA SANHUEZA BELTRAN.' },
+    { numero: '1168', fecha: '08.06.2011', fechaPublicacion: '29.04.2013, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO DE CARRO ISOTERMICO AL SR. JOSE MARTINEZ VIDAL.' },
+    { numero: '1173', fecha: '07.06.2011', fechaPublicacion: '29.04.2013, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO A LA SRA. MARIA OSORIO MORAGA.' },
+    { numero: '1266', fecha: '15.06.2011', fechaPublicacion: '29.04.2013, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO DE CARRO ISOTERMICO A LA SRA. MARIA AHUMADA PASTENES.' },
+    { numero: '1387', fecha: '01.07.2011', fechaPublicacion: '29.04.2013, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO A LA SRA. MARIA VALENZUELA CORDOVA.' },
+    { numero: '1407', fecha: '05.07.2011', fechaPublicacion: '29.04.2013, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO A LA SRA. MARIA MINCHOLA DE MALIMBA.' },
+    { numero: '1518', fecha: '18.07.2011', fechaPublicacion: '29.04.2013, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO A LA SRA. NORMA SANCHEZ BUSTOS.' },
+    { numero: '1804', fecha: '01.08.2011', fechaPublicacion: '29.04.2013, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO A LA SRA. JUANA CALFUÑEN HUENULEF.' },
+    { numero: '1756', fecha: '17.08.2011', fechaPublicacion: '29.04.2013, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO A LA SEÑORA ADELA CEREDA ORELLANA.' },
+    { numero: '1808', fecha: '23.08.2011', fechaPublicacion: '29.04.2013, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO A LA SEÑORA LILIANA MANSILLA LAGOS.' },
+    { numero: '1847', fecha: '30.08.2011', fechaPublicacion: '29.04.2013, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO AL SR. LUIS NAVARRETE RUZ.' },
+    { numero: '1994', fecha: '14.09.2011', fechaPublicacion: '29.04.2013, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO AL SR. RIGOBERTO LEON ALEGRIA.' },
+    { numero: '1995', fecha: '14.09.2011', fechaPublicacion: '29.04.2013, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO A LA SRA. BLANCA ECHENES DEVIA.' },
+    { numero: '1998', fecha: '14.09.2011', fechaPublicacion: '29.04.2013, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO A LA SRA. MARIA TAPIA CACERES.' },
+    { numero: '2019', fecha: '14.09.2011', fechaPublicacion: '29.04.2013, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO AL SR. MICHAEL PERUCCI LAGOS.' },
+    { numero: '2021', fecha: '14.09.2011', fechaPublicacion: '29.04.2013, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO A LA SRA. CLORINDA MOLINA MONTECINOS.' },
+    { numero: '2084', fecha: '26.09.2011', fechaPublicacion: '29.04.2013, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO A LA SRA. ANA VASQUEZ VASQUEZ.' },
+    { numero: '2177', fecha: '11.10.2011', fechaPublicacion: '29.04.2013, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO A LA SRA. CRISTINA SEPULVEDA MEZA.' },
+    { numero: '2219', fecha: '11.10.2011', fechaPublicacion: '29.04.2013, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO A LA SRA. NORMA HUAQUIÑIR MARIMAN.' },
+    { numero: '2404', fecha: '27.10.2011', fechaPublicacion: '29.04.2013, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO AL SR. PATRICIO ARRIAGADA VERGARA.' },
+    { numero: '2482', fecha: '10.11.2011', fechaPublicacion: '29.04.2013, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO A LA SRA. MARGARITA CANELO LIEN.' },
+    { numero: '2484', fecha: '10.11.2011', fechaPublicacion: '29.04.2013, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO A LA SRA. LUZ PAILLALEF PAILLALEF.' },
+    { numero: '2499', fecha: '11.11.2011', fechaPublicacion: '29.04.2013, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO AL SR. LUIS OJEDA ROMERO.' },
+    { numero: '2576', fecha: '22.11.2011', fechaPublicacion: '29.04.2013, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO A LA SRA. LAURENTINA NOVOA FERRADA.' },
+    { numero: '2801', fecha: '19.12.2011', fechaPublicacion: '29.04.2013, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO A LA SRA. MARGARITA COMPAI.' },
+    { numero: '2806', fecha: '19.12.2011', fechaPublicacion: '29.04.2013, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO EN FERIAS LIBRES AL SR. FABIAN ORTIZ QUILADA.' },
+    { numero: '2832', fecha: '20.12.2011', fechaPublicacion: '29.04.2013, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO AL SR. RAUL PONCE MENESES.' }
+  ].map((registro) => ({ ...registro, enlaceModificacion: 'Sin Enlaces' }))),
+  '2015': crearPermisosEstacionado([
+    { numero: '2842', fecha: '16.12.2015', fechaPublicacion: '06.01.2016, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO A LA SRA. YAMILA TAPIA OTAROLA GARCIA.', ultimaActualizacion: '01.11.2016', enlaceModificacion: 'PDF', tipoNorma: 'Decretos Exentos' },
+    { numero: '2398', fecha: '27.10.2015', fechaPublicacion: '06.11.2015, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO AL SR. HUGO CANALES VENEGAS.', tipoNorma: 'Decretos Exentos' },
+    { numero: '2318', fecha: '13.10.2015', fechaPublicacion: '06.11.2015, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO A LA SRA. MARIA ESPINOZA.', tipoNorma: 'Decretos Exentos' },
+    { numero: '2201', fecha: '28.09.2015', fechaPublicacion: '07.10.2015, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO A LA SRA. ESTRELLA CRUZ BRAVO.', tipoNorma: 'Decretos Exentos' },
+    { numero: '1793', fecha: '12.08.2015', fechaPublicacion: '06.09.2015, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO A LA SRA. MARIO WAGHORN TACCONI.', tipoNorma: 'Decretos Exentos' },
+    { numero: '1446', fecha: '10.07.2015', fechaPublicacion: '06.08.2015, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO A LA SRA. TANYA GONZALEZ MOLINA.', tipoNorma: 'Decretos Exentos' },
+    { numero: '1002', fecha: '12.05.2015', fechaPublicacion: '06.05.2015, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO A LA SRA. ROSA BENAVIDES RIVERA.', tipoNorma: 'Decretos Exentos' },
+    { numero: '918', fecha: '27.04.2015', fechaPublicacion: '06.05.2015, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO A LA SRA. ANA OVALLE BASCUR.', tipoNorma: 'Decretos Exentos' },
+    { numero: '639', fecha: '20.03.2015', fechaPublicacion: '06.04.2015, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO AL SR. EDUARDO DIAZ PAINEÑAO.', tipoNorma: 'Decretos Exentos' },
+    { numero: '513', fecha: '09.03.2015', fechaPublicacion: '06.04.2015, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO A LA SRA. MONICA CID CASTRO.', tipoNorma: 'Decretos Exentos' },
+    { numero: '338', fecha: '11.02.2015', fechaPublicacion: '05.03.2015, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO A LA SRA. BLANCA ECHENANES DEVIA.', tipoNorma: 'Decretos Exentos' },
+    { numero: '337', fecha: '11.02.2015', fechaPublicacion: '05.03.2015, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO AL SR. RIGOBERTO LEON ALEGRIA.', tipoNorma: 'Decretos Exentos' }
+  ]),
+  '2014': crearPermisosEstacionado([
+    { numero: '3678', fecha: '23.12.2014', fechaPublicacion: '06.01.2015, Página Web', descripcion: 'OTORGA PERMISO DE ESTACIONAMIENTO RESERVADO A SINDICATO DE TRABAJADORES INDEPENDIENTES “TAXISTAS NETOS LO PRADO”.', tieneEfectosGenerales: 'No' },
+    { numero: '3314', fecha: '18.11.2014', fechaPublicacion: '06.12.2014, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO AL SR. PASCUAL DONOSO RODRIGUEZ.', tieneEfectosGenerales: 'No' },
+    { numero: '2804', fecha: '06.10.2014', fechaPublicacion: '06.11.2014, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO A LA SRA. BERNARDA CALDERON CARDENAS.', tieneEfectosGenerales: 'No' },
+    { numero: '2691', fecha: '25.09.2014', fechaPublicacion: '06.10.2014, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO A LA SRA. MARIA ZUÑIGA OLAVARRIA.', tieneEfectosGenerales: 'No' },
+    { numero: '2355', fecha: '21.08.2014', fechaPublicacion: '06.09.2014, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO AL SR. JOEL RODRIGUEZ PALMER.', tieneEfectosGenerales: 'No' },
+    { numero: '2156', fecha: '31.07.2014', fechaPublicacion: '06.08.2014, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO EN FERIAS LIBRES AL SR. LUIS BUSTOS RAMIREZ.', tieneEfectosGenerales: 'No' },
+    { numero: '1951', fecha: '10.07.2014', fechaPublicacion: '06.08.2014, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO A LA SRA. GISELLE FRANCO GODOY.', tieneEfectosGenerales: 'No' },
+    { numero: '1900', fecha: '09.07.2014', fechaPublicacion: '06.08.2014, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO AL SR. ALEXANDER VILCHES QUIROZ.', tieneEfectosGenerales: 'No' },
+    { numero: '1897', fecha: '09.07.2014', fechaPublicacion: '06.08.2014, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO A LA SRA. JEANNETTE SILVA MIRANDA.', tieneEfectosGenerales: 'No' },
+    { numero: '1234', fecha: '07.05.2014', fechaPublicacion: '06.06.2014, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO A LA SRA. FLOR CEA COLLINAO.', tieneEfectosGenerales: 'No' },
+    { numero: '1151', fecha: '28.04.2014', fechaPublicacion: '06.05.2014, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO A LA SRA. ANGELA FREDES GONZALEZ.', tieneEfectosGenerales: 'No' },
+    { numero: '1148', fecha: '28.04.2014', fechaPublicacion: '06.05.2014, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO AL SR. RUEN RIQUELME FLORES.', tieneEfectosGenerales: 'No' },
+    { numero: '1027', fecha: '15.04.2014', fechaPublicacion: '06.05.2014, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO A LA SRA. EUMENDES DEL CARMEN MELLAR.', tieneEfectosGenerales: 'No' },
+    { numero: '748', fecha: '28.03.2014', fechaPublicacion: '06.04.2014, Página Web', descripcion: 'Otorga permiso estacionado a la sra. Rosa Marcela Vasquez Osorio.' },
+    { numero: '63', fecha: '13.01.2014', fechaPublicacion: '06.02.2014, Página Web', descripcion: 'Otorga permiso estacionado a la sra. Ismelda Arevalo Inostroza.' }
+  ]),
+  '2013': crearPermisosEstacionado([
+    { numero: '492', fecha: '04.02.2013', fechaPublicacion: '01.03.2013, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO A LA SRA. ANA MARIA MALDONADO ARAOS.' },
+    { numero: '650', fecha: '20.02.2013', fechaPublicacion: '15.03.2013, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO EN FERIAS LIBRES AL SR. GERARDO FUENTES CAMPOS.' },
+    { numero: '653', fecha: '20.02.2013', fechaPublicacion: '15.03.2013, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO A LA SRA. LIDIA GARCES QUILADA.' },
+    { numero: '842', fecha: '15.03.2013', fechaPublicacion: '05.04.2013, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO A LA SRA. RAUL HERNANDEZ PERALTA.' },
+    { numero: '1062', fecha: '10.04.2013', fechaPublicacion: '05.03.2013, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO A LA SRA. LAURA CONTRERAS VERA.', ultimaActualizacion: '16.05.2013' },
+    { numero: '1144', fecha: '23.04.2013', fechaPublicacion: '05.03.2013, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO A LA SRA. MAGALY VILCAÑAUPA CANCHURICA.' },
+    { numero: '1337', fecha: '09.05.2013', fechaPublicacion: '21.06.2013, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO A LA SRA. MARLENE SAEZ VILLALOBOS.' },
+    { numero: '1447', fecha: '22.05.2013', fechaPublicacion: '21.06.2013, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO A LA SRA. IRENE VASQUEZ SOTO.' },
+    { numero: '1564', fecha: '04.06.2013', fechaPublicacion: '21.06.2013, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO AL SR. CLAUDIO DELSO GONZALEZ.' },
+    { numero: '1590', fecha: '05.06.2013', fechaPublicacion: '21.06.2013, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO AL SR. HUGO VILCAN AUPA ACUÑA.' },
+    { numero: '1894', fecha: '08.07.2013', fechaPublicacion: '09.08.2013, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO A LA SRA. GILDA VENEGAS VELIZ.' },
+    { numero: '1921', fecha: '09.07.2013', fechaPublicacion: '09.08.2013, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO A LA SRA. ANA MOLINA SARAVIA.' },
+    { numero: '1970', fecha: '12.07.2013', fechaPublicacion: '09.08.2013, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO A LA SRA. SUSANA AVALOS ASTUDILLO.' },
+    { numero: '1971', fecha: '12.07.2013', fechaPublicacion: '09.08.2013, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO A LA SRA. ANDREA FUENTES CABELLO.' },
+    { numero: '1972', fecha: '12.07.2013', fechaPublicacion: '09.08.2013, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO A LA SRA. DIANA REYES CONSTANZO.' },
+    { numero: '2050', fecha: '25.07.2013', fechaPublicacion: '09.08.2013, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO A LA SRA. ANA PAREDES ARANGUIZ.' },
+    { numero: '2285', fecha: '20.08.2013', fechaPublicacion: '22.08.2013, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO A LA SRA. ROSA DUARTE DUARTE.' },
+    { numero: '2395', fecha: '27.08.2013', fechaPublicacion: '06.09.2013, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO EN FERIAS LIBRES A LA SRA. PATRICIA CASTILLO HERNANDEZ.', tieneEfectosGenerales: 'No' },
+    { numero: '2664', fecha: '27.09.2013', fechaPublicacion: '06.10.2013, Página Web', descripcion: 'Otorga permiso estacionado al sr. Luis Rojas Rodriguez.', tieneEfectosGenerales: 'No' },
+    { numero: '2666', fecha: '27.09.2013', fechaPublicacion: '06.10.2013, Página Web', descripcion: 'Otorga permiso estacionado a la sra. Patricia Gutierrez Orellana.', tieneEfectosGenerales: 'No' },
+    { numero: '2687', fecha: '01.10.2013', fechaPublicacion: '06.11.2013, Página Web', descripcion: 'Otorga permiso estacionado al sr. Marco Maluenda Esquivel.', tieneEfectosGenerales: 'No' }
+  ].map((registro) => ({ ...registro, enlaceModificacion: 'Sin Modificación' }))),
+  '2012': crearPermisosEstacionado([
+    { numero: '68', fecha: '06.01.2012', fechaPublicacion: '29.04.2013, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO EN FERIAS LIBRES A LA SRA. JULIA CASTAÑEDA POBLETE.' },
+    { numero: '70', fecha: '06.01.2012', fechaPublicacion: '29.04.2013, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO EN FERIAS LIBRES A LA SRA. VIVIANA CASTILLO HERNANDEZ.' },
+    { numero: '182', fecha: '16.01.2012', fechaPublicacion: '29.04.2013, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO AL SR. VICTORINO JAUQUE REBOLLEDO.' },
+    { numero: '199', fecha: '17.01.2012', fechaPublicacion: '29.04.2013, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO AL SR. LORENZO CANIUPAN CALLUAN.' },
+    { numero: '212', fecha: '19.01.2012', fechaPublicacion: '29.04.2013, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO A LA SRA. SONIA SILVA ROMANE.' },
+    { numero: '376', fecha: '31.01.2012', fechaPublicacion: '29.04.2013, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO AL SR. MAURICIO HURTADO DIAZ.' },
+    { numero: '487', fecha: '10.02.2012', fechaPublicacion: '29.04.2013, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO EN FERIAS LIBRES AL SR. JAIME BRAVO GONZALEZ.' },
+    { numero: '502', fecha: '10.02.2012', fechaPublicacion: '29.04.2013, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO EN FERIAS LIBRES A LA SRA. SOLEDAD SOTO MERINO.' },
+    { numero: '677', fecha: '12.03.2012', fechaPublicacion: '29.04.2013, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO A LA SRA. GRIMALDINA LOPEZ LOPEZ.' },
+    { numero: '797', fecha: '27.03.2012', fechaPublicacion: '29.04.2013, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO A LA SRA. DANIELA SEPULVEDA LEON.' },
+    { numero: '885', fecha: '09.04.2012', fechaPublicacion: '29.04.2013, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO AL SR. PABLO CUBILLOS CAROCA.' },
+    { numero: '992', fecha: '18.04.2012', fechaPublicacion: '29.04.2013, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO A LA SRA. FRESIA BARRIOS UBILLA.' },
+    { numero: '1264', fecha: '16.05.2012', fechaPublicacion: '29.04.2013, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO A LA SRA. ANA FUENTES NUÑEZ.' },
+    { numero: '1387', fecha: '01.06.2012', fechaPublicacion: '29.04.2013, Página Web', descripcion: 'OTORGA PATENTE ESTACIONADO AL SR. ALEJANDRO ITURRIAGA ALVAREZ.' },
+    { numero: '2206', fecha: '23.08.2012', fechaPublicacion: '29.04.2013, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO EN FERIAS LIBRES AL SR. JUAN JEREZ GUAJARDO.' },
+    { numero: '2349', fecha: '07.09.2012', fechaPublicacion: '29.04.2013, Página Web', descripcion: 'OTORGA PATENTE ESTACIONADO AL SR. JHONNY BERMAL CARVAJAL.' },
+    { numero: '2397', fecha: '14.09.2012', fechaPublicacion: '29.04.2013, Página Web', descripcion: 'OTORGA PATENTE ESTACIONADO A LA SRA. MARILUZ DEL CARMEN SEGOVIA GUTIERREZ.' },
+    { numero: '2399', fecha: '14.09.2012', fechaPublicacion: '29.04.2013, Página Web', descripcion: 'OTORGA PATENTE ESTACIONADO A LA SRA. CECILIA ZAMORA VARGAS.' },
+    { numero: '2913', fecha: '26.11.2012', fechaPublicacion: '29.04.2013, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO A LA SRA. CATALINA SERVILLA DURAN.' },
+    { numero: '3128', fecha: '18.12.2012', fechaPublicacion: '29.04.2013, Página Web', descripcion: 'OTORGA PERMISO ESTACIONADO AL SR. ESTANISLAO QUEIROZ SANTANDER.' }
+  ].map((registro) => ({ ...registro, enlaceModificacion: 'Sin Enlaces' })))
+};

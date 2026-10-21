@@ -8,6 +8,19 @@ import { patentesProvisoriasPorAnio } from './Seccion7_6Patente(provisoria)';
 import { patentesMicroempresaPorAnio } from './Seccion7_6Patente(microempresa)';
 import { permisosFeriaPorAnio } from './Seccion7_6Patente(feriaLibre)';
 import { permisosFeriaSantaMartaPorAnio } from './Seccion7_6Patente(FeriaStaMarta)';
+import { permisosTamarindosPorAnio } from './Seccion7_6Patente(Tamarindos)';
+import { permisosEstacionadoPorAnio } from './Seccion7_6Patente(estacionado)';
+import { permisosKioscoPorAnio } from './Seccion7_6Patente(kiosko)';
+import { permisosExentosPorAnio } from './Seccion7_6Patente(exento)';
+import { patentesEDCAPorAnio } from './Seccion7_6Patentes(E.D.C.A)';
+import { clausurasPorAnio } from './Seccion7_6Patente(clausura)';
+import { ampliacionGiroPorAnio } from './Seccion7_6Patente(A.giro)';
+import { cambioGiroPorAnio } from './Seccion7_6Patente(C.giro)';
+import { cambioDireccionComercialPorAnio } from './Seccion7_6Patente(Dir.comercial)';
+import { cambioRazonSocialPorAnio } from './Seccion7_6Patente(RazonSocial)';
+import { retiroKioscoPorAnio } from './Seccion7_6Patente(RetiroKiosko)';
+import { ampliacionKioscoPorAnio } from './Seccion7_6Patente(AmpliacionKiosko)';
+import { ampliacionHorarioPorAnio } from './Seccion7_6Patente(Ampli.Horario)';
 
 export interface PatenteHistorico {
   tipoNorma: string;
@@ -62,7 +75,33 @@ export default function Seccion7_6Patentes({
                 ? permisosFeriaPorAnio
                 : categoriaSeleccionada === 'Permiso Feria Santa Marta'
                   ? permisosFeriaSantaMartaPorAnio
-                : {};
+                  : categoriaSeleccionada === 'Permiso Feria Los Tamarindos'
+                    ? permisosTamarindosPorAnio
+                    : categoriaSeleccionada === 'Permiso Estacionado'
+                      ? permisosEstacionadoPorAnio
+                      : categoriaSeleccionada === 'Permiso de Kiosco'
+                        ? permisosKioscoPorAnio
+                        : categoriaSeleccionada === 'Permiso Exento'
+                          ? permisosExentosPorAnio
+                          : categoriaSeleccionada === 'Eliminación de Patentes y Permisos'
+                            ? patentesEDCAPorAnio
+                            : categoriaSeleccionada === 'Clausura de Patentes'
+                              ? clausurasPorAnio
+                              : categoriaSeleccionada === 'Ampliación de Giro'
+                                ? ampliacionGiroPorAnio
+                                : categoriaSeleccionada === 'Cambio de Giro'
+                                  ? cambioGiroPorAnio
+                                  : categoriaSeleccionada === 'Cambio de Dirección Comercial'
+                                    ? cambioDireccionComercialPorAnio
+                                    : categoriaSeleccionada === 'Cambio de Razón Social'
+                                      ? cambioRazonSocialPorAnio
+                                      : categoriaSeleccionada === 'Retiro de Kiosco'
+                                        ? retiroKioscoPorAnio
+                                        : categoriaSeleccionada === 'Ampliación de Kiosco'
+                                          ? ampliacionKioscoPorAnio
+                                          : categoriaSeleccionada === 'Ampliación de Horario'
+                                            ? ampliacionHorarioPorAnio
+                                            : {};
     const registrosAnio = registrosPorAnio[anio] || [];
     const registros = termino
       ? registrosAnio.filter((registro) =>
@@ -220,7 +259,12 @@ export default function Seccion7_6Patentes({
         <article key={patente} className="overflow-hidden rounded-md border border-slate-300 bg-white transition-colors hover:border-blue-400">
           <button
             type="button"
-            onClick={() => setCategoriaSeleccionada(patente)}
+            onClick={() => {
+              setCategoriaSeleccionada(patente);
+              if (patente === 'Permiso Estacionado' && !permisosEstacionadoPorAnio[anio]) {
+                onCambiarAnio('2015');
+              }
+            }}
             className="flex min-h-14 w-full items-center justify-between gap-2 border-none bg-white px-2 py-2 text-left text-[11px] font-semibold text-blue-800"
           >
             <span>{patente}</span>

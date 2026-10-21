@@ -8,6 +8,28 @@ import Seccion7_6Sumarios, { sumariosPorAnio, type Sumario } from './Seccion7_6S
 import Seccion7_6Comodato, { comodatosPorAnio, type Comodato } from './Seccion7_6Comodato';
 import Seccion7_6Convenios, { conveniosPorAnio, type Convenio } from './Seccion7_6Convenios';
 import Seccion7_6Patentes from './Seccion7_6Patentes';
+import Seccion7_6PermisoUso from './Seccion7_6PermisoUso';
+import Seccion7_6EstacionamientoRes from './Seccion7_6EstacionamientoRes';
+import Seccion7_6ComprasPublicas from './Seccion7_6ComprasPublicas';
+import Seccion7_6ConcursoPubli from './Seccion7_6ConcursoPubli';
+import Seccion7_6LLamadoConcurso from './Seccion7_6LLamadoConcurso';
+import Seccion7_6AprobAntepro from './Seccion7_6AprobAntepro';
+import Seccion7_6SubdivFusion from './Seccion7_6SubdivFusion';
+import Seccion7_6ModifProEdif from './Seccion7_6ModifProEdif';
+import Seccion7_6AutorizacionDemoli from './Seccion7_6AutorizacionDemoli';
+import Seccion7_6Ley20563 from './Seccion7_6Ley20.563';
+import Seccion7_6ObraMenor from './Seccion7_6ObraMenor';
+import Seccion7_6PermEdificacion from './Seccion7_6PermEdificacion';
+import Seccion7_6AmpliViviSocial from './Seccion7_6AmpliViviSocial';
+
+type AprobacionAnteproyecto = (typeof Seccion7_6AprobAntepro.documentosPorAnio)[string][number];
+type SubdivisionFusion = (typeof Seccion7_6SubdivFusion.documentosPorAnio)[string][number];
+type ModificacionProyectoEdificacion = (typeof Seccion7_6ModifProEdif.documentosPorAnio)[string][number];
+type AutorizacionDemolicion = (typeof Seccion7_6AutorizacionDemoli.documentosPorAnio)[string][number];
+type PermisoLey20563 = (typeof Seccion7_6Ley20563.documentosPorAnio)[string][number];
+type PermisoObraMenor = (typeof Seccion7_6ObraMenor.documentosPorAnio)[string][number];
+type PermisoEdificacion = (typeof Seccion7_6PermEdificacion.documentosPorAnio)[string][number];
+type AmpliacionViviendaSocial = (typeof Seccion7_6AmpliViviSocial.documentosPorAnio)[string][number];
 
 const patentesPermisos = [
   'Patente Alcohol',
@@ -40,7 +62,7 @@ interface CategoriaResolucion {
   id: string;
   nombre: string;
   terminosBusqueda?: readonly string[];
-  documentosPorAnio?: Record<string, Array<OrdenDemolicion | CierreCalle | CambioNombreVia | SentidoTransito | Sumario | Comodato | Convenio>>;
+  documentosPorAnio?: Record<string, Array<OrdenDemolicion | CierreCalle | CambioNombreVia | SentidoTransito | Sumario | Comodato | Convenio | AprobacionAnteproyecto | SubdivisionFusion | ModificacionProyectoEdificacion | AutorizacionDemolicion | PermisoLey20563 | PermisoObraMenor | PermisoEdificacion | AmpliacionViviendaSocial>>;
 }
 
 const normalizarTexto = (texto: string) =>
@@ -71,20 +93,20 @@ export default function Seccion7_6({ onVolver }: Seccion7_6Props) {
 
   // Categorías de "Dirección Obras Municipales"
   const resolucionesObras: CategoriaResolucion[] = [
-    { id: 'aprob-anteproyecto', nombre: 'Resolución Aprob Anteproyecto' },
-    { id: 'aprob-subdiv-fusion', nombre: 'Resolución Aprob. Subdiv o Fusión' },
-    { id: 'modif-proyecto-edif', nombre: 'Resolución Modif. Proyecto Edif' },
-    { id: 'aut-obras-prelim', nombre: 'Aut. Obras Prelim. y-o Demolic.' },
-    { id: 'permiso-regul-ley-20563', nombre: 'Permiso Regul. Ley 20.563' },
-    { id: 'permiso-edif-obra-menor', nombre: 'Permiso Edificación Obra Menor' },
-    { id: 'permiso-edificacion', nombre: 'Permiso Edificación' },
-    { id: 'permiso-o-menor-v-social', nombre: 'Permiso O. Menor Amp. V. Social' },
+    { id: 'aprob-anteproyecto', nombre: 'Resolución Aprobación Anteproyecto', documentosPorAnio: Seccion7_6AprobAntepro.documentosPorAnio },
+    { id: 'aprob-subdiv-fusion', nombre: 'Resolución Aprobación de Subdivisión o Fusión', documentosPorAnio: Seccion7_6SubdivFusion.documentosPorAnio },
+    { id: 'modif-proyecto-edif', nombre: 'Resolución Modificación Proyecto Edificación', documentosPorAnio: Seccion7_6ModifProEdif.documentosPorAnio },
+    { id: 'aut-obras-prelim', nombre: 'Autorización Obras Preliminares Demolición', documentosPorAnio: Seccion7_6AutorizacionDemoli.documentosPorAnio },
+    { id: 'permiso-regul-ley-20563', nombre: 'Permiso Regularización Ley 20.563', documentosPorAnio: Seccion7_6Ley20563.documentosPorAnio },
+    { id: 'permiso-edif-obra-menor', nombre: 'Permiso Edificación Obra Menor', documentosPorAnio: Seccion7_6ObraMenor.documentosPorAnio },
+    { id: 'permiso-edificacion', nombre: 'Permiso Edificación', documentosPorAnio: Seccion7_6PermEdificacion.documentosPorAnio },
+    { id: 'permiso-o-menor-v-social', nombre: 'Permiso Obra Menor Ampliación Vivienda Social', documentosPorAnio: Seccion7_6AmpliViviSocial.documentosPorAnio },
     { id: 'regularizacion-ley-20251', nombre: 'Regularización Ley 20.251' },
     { id: 'recepcion-obras-menor', nombre: 'Recepción de Obras Menor' },
     { id: 'recepcion-obras', nombre: 'Recepción de Obras' },
-    { id: 'recepcion-o-menor-v-soc', nombre: 'Recepción O. Menor Amp. V. Soc' },
+    { id: 'recepcion-o-menor-v-soc', nombre: 'Recepción Obra Menor Ampliación Vivienda Social' },
     { id: 'regularizacion-ley-19532', nombre: 'Regularización Ley 19.532' },
-    { id: 'recepcion-regul-ley-20671', nombre: 'Recepción Regul. Ley 20.671' },
+    { id: 'recepcion-regul-ley-20671', nombre: 'Recepción Regularización Ley 20.671' },
     { id: 'permiso-recepcion-catastrofe', nombre: 'Permiso Recepción Catástrofe' },
     { id: 'regularizacion-ley-20898', nombre: 'Regularización Ley 20.898' },
   ];
@@ -211,6 +233,71 @@ export default function Seccion7_6({ onVolver }: Seccion7_6Props) {
                         />
                       ) : cat.id === 'convenios-servicios' ? (
                         <Seccion7_6Convenios
+                          anio={anioSeleccionado}
+                          busqueda={coincideCategoria || coincideTituloSeccion ? '' : busqueda}
+                        />
+                      ) : cat.id === 'permiso-uso' ? (
+                        <Seccion7_6PermisoUso
+                          anio={anioSeleccionado}
+                          busqueda={coincideCategoria || coincideTituloSeccion ? '' : busqueda}
+                        />
+                      ) : cat.id === 'estacionamiento-reservado' ? (
+                        <Seccion7_6EstacionamientoRes
+                          anio={anioSeleccionado}
+                          busqueda={coincideCategoria || coincideTituloSeccion ? '' : busqueda}
+                        />
+                      ) : cat.id === 'compras-publicas' ? (
+                        <Seccion7_6ComprasPublicas
+                          anio={anioSeleccionado}
+                          busqueda={coincideCategoria || coincideTituloSeccion ? '' : busqueda}
+                        />
+                      ) : cat.id === 'concurso-publico' ? (
+                        <Seccion7_6ConcursoPubli
+                          anio={anioSeleccionado}
+                          busqueda={coincideCategoria || coincideTituloSeccion ? '' : busqueda}
+                        />
+                      ) : cat.id === 'concurso-programas' ? (
+                        <Seccion7_6LLamadoConcurso
+                          anio={anioSeleccionado}
+                          busqueda={coincideCategoria || coincideTituloSeccion ? '' : busqueda}
+                        />
+                      ) : cat.id === 'aprob-anteproyecto' ? (
+                        <Seccion7_6AprobAntepro
+                          anio={anioSeleccionado}
+                          busqueda={coincideCategoria || coincideTituloSeccion ? '' : busqueda}
+                        />
+                      ) : cat.id === 'aprob-subdiv-fusion' ? (
+                        <Seccion7_6SubdivFusion
+                          anio={anioSeleccionado}
+                          busqueda={coincideCategoria || coincideTituloSeccion ? '' : busqueda}
+                        />
+                      ) : cat.id === 'modif-proyecto-edif' ? (
+                        <Seccion7_6ModifProEdif
+                          anio={anioSeleccionado}
+                          busqueda={coincideCategoria || coincideTituloSeccion ? '' : busqueda}
+                        />
+                      ) : cat.id === 'aut-obras-prelim' ? (
+                        <Seccion7_6AutorizacionDemoli
+                          anio={anioSeleccionado}
+                          busqueda={coincideCategoria || coincideTituloSeccion ? '' : busqueda}
+                        />
+                      ) : cat.id === 'permiso-regul-ley-20563' ? (
+                        <Seccion7_6Ley20563
+                          anio={anioSeleccionado}
+                          busqueda={coincideCategoria || coincideTituloSeccion ? '' : busqueda}
+                        />
+                      ) : cat.id === 'permiso-edif-obra-menor' ? (
+                        <Seccion7_6ObraMenor
+                          anio={anioSeleccionado}
+                          busqueda={coincideCategoria || coincideTituloSeccion ? '' : busqueda}
+                        />
+                      ) : cat.id === 'permiso-edificacion' ? (
+                        <Seccion7_6PermEdificacion
+                          anio={anioSeleccionado}
+                          busqueda={coincideCategoria || coincideTituloSeccion ? '' : busqueda}
+                        />
+                      ) : cat.id === 'permiso-o-menor-v-social' ? (
+                        <Seccion7_6AmpliViviSocial
                           anio={anioSeleccionado}
                           busqueda={coincideCategoria || coincideTituloSeccion ? '' : busqueda}
                         />
