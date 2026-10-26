@@ -18,9 +18,19 @@ import Seccion7_6SubdivFusion from './Seccion7_6SubdivFusion';
 import Seccion7_6ModifProEdif from './Seccion7_6ModifProEdif';
 import Seccion7_6AutorizacionDemoli from './Seccion7_6AutorizacionDemoli';
 import Seccion7_6Ley20563 from './Seccion7_6Ley20.563';
+import Seccion7_6Ley20251 from './Seccion7_6Ley20.251';
+import Seccion7_6Ley19532 from './Seccion7_6Ley19.532';
+import Seccion7_6Ley20671 from './Seccion7_6Ley20.671';
+import Seccion7_6Ley20898 from './Seccion7_6Ley20.898';
+import { registrosLey20898, type RegularizacionLey20898 } from './Seccion7_6Ley20.898.data';
+import Seccion7_6RecCatastro from './Seccion7_6RecCatastro';
 import Seccion7_6ObraMenor from './Seccion7_6ObraMenor';
 import Seccion7_6PermEdificacion from './Seccion7_6PermEdificacion';
 import Seccion7_6AmpliViviSocial from './Seccion7_6AmpliViviSocial';
+import EstadoSinRegistros from './EstadoSinRegistros';
+import Seccion7_6RecObrasMenor from './Seccion7_6RecObrasMenor';
+import Seccion7_6RecObras from './Seccion7_6RecObras';
+import Seccion7_6RecOMAmpliViviSocial from './Seccion7_6RecOMAmpliViviSocial';
 
 type AprobacionAnteproyecto = (typeof Seccion7_6AprobAntepro.documentosPorAnio)[string][number];
 type SubdivisionFusion = (typeof Seccion7_6SubdivFusion.documentosPorAnio)[string][number];
@@ -63,6 +73,7 @@ interface CategoriaResolucion {
   nombre: string;
   terminosBusqueda?: readonly string[];
   documentosPorAnio?: Record<string, Array<OrdenDemolicion | CierreCalle | CambioNombreVia | SentidoTransito | Sumario | Comodato | Convenio | AprobacionAnteproyecto | SubdivisionFusion | ModificacionProyectoEdificacion | AutorizacionDemolicion | PermisoLey20563 | PermisoObraMenor | PermisoEdificacion | AmpliacionViviendaSocial>>;
+  documentosFijos?: Array<RegularizacionLey20898>;
 }
 
 const normalizarTexto = (texto: string) =>
@@ -108,7 +119,7 @@ export default function Seccion7_6({ onVolver }: Seccion7_6Props) {
     { id: 'regularizacion-ley-19532', nombre: 'Regularización Ley 19.532' },
     { id: 'recepcion-regul-ley-20671', nombre: 'Recepción Regularización Ley 20.671' },
     { id: 'permiso-recepcion-catastrofe', nombre: 'Permiso Recepción Catástrofe' },
-    { id: 'regularizacion-ley-20898', nombre: 'Regularización Ley 20.898' },
+    { id: 'regularizacion-ley-20898', nombre: 'Regularización Ley 20.898', documentosFijos: registrosLey20898 },
   ];
 
   // Estado para controlar qué acordeones están abiertos
@@ -124,7 +135,7 @@ export default function Seccion7_6({ onVolver }: Seccion7_6Props) {
   };
 
   const registrosCoincidentes = (categoria: CategoriaResolucion) => {
-    const registros = categoria.documentosPorAnio?.[anioSeleccionado] || [];
+    const registros = categoria.documentosFijos ?? categoria.documentosPorAnio?.[anioSeleccionado] ?? [];
     if (!terminoBusqueda) return registros;
 
     return registros.filter((registro) =>
@@ -301,6 +312,45 @@ export default function Seccion7_6({ onVolver }: Seccion7_6Props) {
                           anio={anioSeleccionado}
                           busqueda={coincideCategoria || coincideTituloSeccion ? '' : busqueda}
                         />
+                      ) : cat.id === 'regularizacion-ley-20251' ? (
+                        <Seccion7_6Ley20251
+                          anio={anioSeleccionado}
+                          busqueda={coincideCategoria || coincideTituloSeccion ? '' : busqueda}
+                        />
+                      ) : cat.id === 'regularizacion-ley-19532' ? (
+                        <Seccion7_6Ley19532
+                          anio={anioSeleccionado}
+                          busqueda={coincideCategoria || coincideTituloSeccion ? '' : busqueda}
+                        />
+                      ) : cat.id === 'recepcion-regul-ley-20671' ? (
+                        <Seccion7_6Ley20671
+                          anio={anioSeleccionado}
+                          busqueda={coincideCategoria || coincideTituloSeccion ? '' : busqueda}
+                        />
+                      ) : cat.id === 'permiso-recepcion-catastrofe' ? (
+                        <Seccion7_6RecCatastro
+                          anio={anioSeleccionado}
+                          busqueda={coincideCategoria || coincideTituloSeccion ? '' : busqueda}
+                        />
+                      ) : cat.id === 'regularizacion-ley-20898' ? (
+                        <Seccion7_6Ley20898
+                          busqueda={coincideCategoria || coincideTituloSeccion ? '' : busqueda}
+                        />
+                      ) : cat.id === 'recepcion-obras-menor' ? (
+                        <Seccion7_6RecObrasMenor
+                          anio={anioSeleccionado}
+                          busqueda={coincideCategoria || coincideTituloSeccion ? '' : busqueda}
+                        />
+                      ) : cat.id === 'recepcion-obras' ? (
+                        <Seccion7_6RecObras
+                          anio={anioSeleccionado}
+                          busqueda={coincideCategoria || coincideTituloSeccion ? '' : busqueda}
+                        />
+                      ) : cat.id === 'recepcion-o-menor-v-soc' ? (
+                        <Seccion7_6RecOMAmpliViviSocial
+                          anio={anioSeleccionado}
+                          busqueda={coincideCategoria || coincideTituloSeccion ? '' : busqueda}
+                        />
                       ) : cat.id === 'patentes-permisos' ? (
                         <Seccion7_6Patentes
                           anio={anioSeleccionado}
@@ -309,9 +359,7 @@ export default function Seccion7_6({ onVolver }: Seccion7_6Props) {
                           onCambiarAnio={setAnioSeleccionado}
                         />
                       ) : (
-                        <p className="text-xs text-slate-400 italic text-center py-2">
-                          Sin registros para el año {anioSeleccionado}
-                        </p>
+                        <EstadoSinRegistros titulo={cat.nombre} anio={anioSeleccionado} />
                       )}
                     </div>
                   )}

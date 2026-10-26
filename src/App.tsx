@@ -31,6 +31,8 @@ import Seccion7_3 from './components/Seccion7/Seccion7_3';
 import Seccion7_4 from './components/Seccion7/Seccion7_4';
 import Seccion7_5 from './components/Seccion7/Seccion7_5';
 import Seccion7_6 from './components/Seccion7/Seccion7_6';
+import Seccion7_7 from './components/Seccion7/Seccion7_7';
+import Seccion8Tram from './components/Seccion8/Seccion8Tram';
 
 export default function App() {
   const [pestanaActiva, setPestanaActiva] = useState<string>('principal');
@@ -437,7 +439,17 @@ export default function App() {
             />
           )}
 
-          {['seccion7-7', 'seccion8', 'seccion9', 'seccion10', 'seccion11', 'seccion12', 'seccion13', 'seccion14'].includes(pestanaActiva) && (
+          {pestanaActiva === 'seccion7-7' && (
+            <Seccion7_7
+              onVolver={() => setPestanaActiva('seccion7')}
+            />
+          )}
+
+          {pestanaActiva === 'seccion8' && (
+            <Seccion8Tram onVolver={() => setPestanaActiva('principal')} />
+          )}
+
+          {['seccion9', 'seccion10', 'seccion11', 'seccion12', 'seccion13', 'seccion14'].includes(pestanaActiva) && (
             <div className="content-box-wide space-y-6">
               <div className="flex items-center gap-2 text-sm font-semibold text-slate-700 bg-slate-100 p-3 rounded-lg border border-slate-200">
                 <button onClick={() => setPestanaActiva('principal')} className="text-blue-700 hover:underline cursor-pointer bg-transparent border-none">

@@ -1,4 +1,5 @@
 import PdfLinkButton from '../PdfLinkButton';
+import EstadoSinRegistros from './EstadoSinRegistros';
 
 interface PermisoEdificacion {
   denominacion: string;
@@ -183,13 +184,7 @@ const Seccion7_6PermEdificacion = Object.assign(function Seccion7_6PermEdificaci
   );
 
   if (registros.length === 0) {
-    return (
-      <p className="py-4 text-center text-xs italic text-slate-400">
-        {termino
-          ? `No se encontraron registros que coincidan con “${busqueda}” para el año ${anio}.`
-          : `Sin registros para el año ${anio}`}
-      </p>
-    );
+    return <EstadoSinRegistros titulo="Permiso Edificación" anio={anio} busqueda={busqueda} />;
   }
 
   return (

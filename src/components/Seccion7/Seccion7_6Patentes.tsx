@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { ArrowLeft, ChevronDown, ChevronRight, ChevronUp } from 'lucide-react';
 import PdfLinkButton from '../PdfLinkButton';
+import EstadoSinRegistros from './EstadoSinRegistros';
 import { patentesAlcoholPorAnio } from './Seccion7_6Patentes(alcohol)';
 import { patentesComercialesPorAnio } from './Seccion7_6Patentes(comercial)';
 import { patentesProfesionalesPorAnio } from './Seccion7_6Patente(profesional)';
@@ -145,15 +146,11 @@ export default function Seccion7_6Patentes({
         </p>
 
         {registros.length === 0 ? (
-          categoriaSeleccionada === 'Patente Comercial' &&
-          ['2012', '2011', '2010', '2009'].includes(anio) &&
-          !termino ? null : (
-          <p className="py-4 text-center text-xs italic text-slate-400">
-            {termino
-              ? `No se encontraron registros que coincidan con “${busqueda}” para el año ${anio}.`
-              : `Sin registros para el año ${anio}`}
-          </p>
-          )
+          <EstadoSinRegistros
+            titulo={categoriaSeleccionada}
+            anio={anio}
+            busqueda={busqueda}
+          />
         ) : (
           <div className="space-y-2">
             {registros.map((registro, index) => {

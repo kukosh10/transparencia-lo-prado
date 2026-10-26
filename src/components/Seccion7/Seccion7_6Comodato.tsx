@@ -1,4 +1,5 @@
 import PdfLinkButton from '../PdfLinkButton';
+import EstadoSinRegistros from './EstadoSinRegistros';
 
 interface Seccion7_6ComodatoProps {
   anio: string;
@@ -131,13 +132,7 @@ export default function Seccion7_6Comodato({ anio, busqueda }: Seccion7_6Comodat
     : registrosAnio;
 
   if (registros.length === 0) {
-    return (
-      <p className="py-2 text-center text-xs italic text-slate-400">
-        {termino
-          ? `No se encontraron registros que coincidan con “${busqueda}” para el año ${anio}.`
-          : `Sin registros para el año ${anio}`}
-      </p>
-    );
+    return <EstadoSinRegistros titulo="Comodatos" anio={anio} busqueda={busqueda} />;
   }
 
   return (

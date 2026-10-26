@@ -1,4 +1,5 @@
 import PdfLinkButton from '../PdfLinkButton';
+import EstadoSinRegistros from './EstadoSinRegistros';
 
 interface Seccion7_6SumariosProps {
   anio: string;
@@ -440,19 +441,7 @@ export default function Seccion7_6Sumarios({ anio, busqueda }: Seccion7_6Sumario
   }
 
   if (registrosFiltrados.length === 0) {
-    return (
-      <article className="overflow-hidden rounded-xl border border-slate-200 bg-white">
-        <div className="p-4">
-          <div className="mb-3 inline-flex rounded-lg border border-blue-100 bg-blue-50 px-3 py-1.5 text-xs font-semibold text-blue-700">
-            Sumarios
-          </div>
-          <h4 className="text-sm font-semibold text-slate-900">Registros del año {anio}</h4>
-        </div>
-        <div className="border-t border-slate-100 bg-slate-50 p-4 text-xs italic text-slate-500">
-          Preparado para incorporar los registros de este año.
-        </div>
-      </article>
-    );
+    return <EstadoSinRegistros titulo="Sumarios" anio={anio} />;
   }
 
   return (

@@ -1,4 +1,5 @@
 import PdfLinkButton from '../PdfLinkButton';
+import EstadoSinRegistros from './EstadoSinRegistros';
 
 interface CompraPublica {
   tipoNorma: string;
@@ -1278,13 +1279,7 @@ export default function Seccion7_6ComprasPublicas({
   );
 
   if (registros.length === 0) {
-    return (
-      <p className="py-4 text-center text-xs italic text-slate-400">
-        {termino
-          ? `No se encontraron registros que coincidan con “${busqueda}” para el año ${anio}.`
-          : `Sin registros para el año ${anio}`}
-      </p>
-    );
+    return <EstadoSinRegistros titulo="Compras Públicas" anio={anio} busqueda={busqueda} />;
   }
 
   return (

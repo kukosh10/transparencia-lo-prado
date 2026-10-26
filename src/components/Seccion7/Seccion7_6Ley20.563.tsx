@@ -1,4 +1,5 @@
 import PdfLinkButton from '../PdfLinkButton';
+import EstadoSinRegistros from './EstadoSinRegistros';
 
 interface Seccion7_6Ley20563Props {
   anio: string;
@@ -71,13 +72,7 @@ const Seccion7_6Ley20563 = Object.assign(function Seccion7_6Ley20563({
   );
 
   if (registros.length === 0) {
-    return (
-      <p className="py-4 text-center text-xs italic text-slate-400">
-        {termino
-          ? `No se encontraron registros que coincidan con “${busqueda}” para el año ${anio}.`
-          : `Sin registros para el año ${anio}`}
-      </p>
-    );
+    return <EstadoSinRegistros titulo="Permiso Regularización Ley 20.563" anio={anio} busqueda={busqueda} />;
   }
 
   return (

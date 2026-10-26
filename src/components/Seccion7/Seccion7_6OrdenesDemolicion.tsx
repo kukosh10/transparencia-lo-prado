@@ -1,4 +1,5 @@
 import PdfLinkButton from '../PdfLinkButton';
+import EstadoSinRegistros from './EstadoSinRegistros';
 
 interface Seccion7_6OrdenesDemolicionProps {
   anio: string;
@@ -678,11 +679,7 @@ export default function Seccion7_6OrdenesDemolicion({ anio, busqueda }: Seccion7
   }
 
   if (ordenes.length === 0) {
-    return (
-      <p className="text-xs text-slate-400 italic text-center py-2">
-        Sin registros para el año {anio}
-      </p>
-    );
+    return <EstadoSinRegistros titulo="Órdenes de Demolición" anio={anio} />;
   }
 
   return (

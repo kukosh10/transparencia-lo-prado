@@ -1,4 +1,5 @@
 import PdfLinkButton from '../PdfLinkButton';
+import EstadoSinRegistros from './EstadoSinRegistros';
 
 interface Seccion7_6ConveniosProps {
   anio: string;
@@ -1027,13 +1028,7 @@ export default function Seccion7_6Convenios({ anio, busqueda }: Seccion7_6Conven
     : conveniosAnio;
 
   if (convenios.length === 0) {
-    return (
-      <p className="py-2 text-center text-xs italic text-slate-400">
-        {termino
-          ? `No se encontraron registros que coincidan con “${busqueda}” para el año ${anio}.`
-          : `Sin registros para el año ${anio}`}
-      </p>
-    );
+    return <EstadoSinRegistros titulo="Convenios Otros Servicios Públicos" anio={anio} busqueda={busqueda} />;
   }
 
   return (
