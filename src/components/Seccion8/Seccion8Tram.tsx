@@ -5,6 +5,10 @@ import Seccion8TramAdminMuni from './Seccion8Tram(AdminMuni)';
 import Seccion8TramSecreMuni from './Seccion8Tram(SecreMuni)';
 import Seccion8TramSecComPlanificacion from './Seccion8Tram(SecComPLanificacion)';
 import Seccion8TramAdminFinanza from './Seccion8Tram(AdminFinanza)';
+import Seccion8TramTransitoTP from './Seccion8Tram(TransitoTP)';
+import Seccion8ObrasMuni from './Seccion8Tram(ObrasMuni)';
+import Seccion8TramMAyOpComunal from './Seccion8Tram(M.AyOp.Comunal)';
+import Seccion8TramDesComuni from './Seccion8Tram(DesComuni)';
 
 interface Seccion8Props {
   onVolver: () => void;
@@ -66,6 +70,42 @@ export default function Seccion8Tram({ onVolver }: Seccion8Props) {
   if (unidadSeleccionada === 'Administración y Finanzas') {
     return (
       <Seccion8TramAdminFinanza
+        onVolver={() => setUnidadSeleccionada(null)}
+        onVolverSeccion={onVolver}
+      />
+    );
+  }
+
+  if (unidadSeleccionada === 'Tránsito y Transporte Público') {
+    return (
+      <Seccion8TramTransitoTP
+        onVolver={() => setUnidadSeleccionada(null)}
+        onVolverSeccion={onVolver}
+      />
+    );
+  }
+
+  if (unidadSeleccionada === 'Obras Municipales') {
+    return (
+      <Seccion8ObrasMuni
+        onVolver={() => setUnidadSeleccionada(null)}
+        onVolverSeccion={onVolver}
+      />
+    );
+  }
+
+  if (unidadSeleccionada === 'Medio Ambiente y Operaciones Comunales') {
+    return (
+      <Seccion8TramMAyOpComunal
+        onVolver={() => setUnidadSeleccionada(null)}
+        onVolverSeccion={onVolver}
+      />
+    );
+  }
+
+  if (unidadSeleccionada === 'Desarrollo Comunitario') {
+    return (
+      <Seccion8TramDesComuni
         onVolver={() => setUnidadSeleccionada(null)}
         onVolverSeccion={onVolver}
       />

@@ -33,6 +33,11 @@ import Seccion7_5 from './components/Seccion7/Seccion7_5';
 import Seccion7_6 from './components/Seccion7/Seccion7_6';
 import Seccion7_7 from './components/Seccion7/Seccion7_7';
 import Seccion8Tram from './components/Seccion8/Seccion8Tram';
+import Seccion8_1OtrosTramites from './components/Seccion8/Seccion8_1OtrosTramites';
+import Seccion9 from './components/Seccion9/Seccion9';
+import Seccion9_1 from './components/Seccion9/Seccion9_1';
+import Seccion9_2 from './components/Seccion9/Seccion9_2';
+import Seccion9_3 from './components/Seccion9/Seccion9_3';
 
 export default function App() {
   const [pestanaActiva, setPestanaActiva] = useState<string>('principal');
@@ -134,7 +139,11 @@ export default function App() {
         setPestanaActiva('seccion7');
         break;
       case '08':
-        setPestanaActiva('seccion8');
+        if (textoLimpio === 'chile atiende') {
+          window.open('https://www.chileatiende.gob.cl/fichas/12305-postular-al-programa-mujer-emprende-en-familia', '_blank', 'noopener,noreferrer');
+        } else {
+          setPestanaActiva(textoLimpio === 'otros trámites' ? 'seccion8-1' : 'seccion8');
+        }
         break;
       case '09':
         setPestanaActiva('seccion9');
@@ -449,7 +458,30 @@ export default function App() {
             <Seccion8Tram onVolver={() => setPestanaActiva('principal')} />
           )}
 
-          {['seccion9', 'seccion10', 'seccion11', 'seccion12', 'seccion13', 'seccion14'].includes(pestanaActiva) && (
+          {pestanaActiva === 'seccion8-1' && (
+            <Seccion8_1OtrosTramites onVolver={() => setPestanaActiva('principal')} />
+          )}
+
+          {pestanaActiva === 'seccion9' && (
+            <Seccion9
+              onVolver={() => setPestanaActiva('principal')}
+              onSeleccionarSubseccion={(subseccionId) => setPestanaActiva(subseccionId)}
+            />
+          )}
+
+          {pestanaActiva === 'seccion9-1' && (
+            <Seccion9_1 onVolver={() => setPestanaActiva('seccion9')} onVolverSeccion={() => setPestanaActiva('principal')} />
+          )}
+
+          {pestanaActiva === 'seccion9-2' && (
+            <Seccion9_2 onVolver={() => setPestanaActiva('seccion9')} onVolverSeccion={() => setPestanaActiva('principal')} />
+          )}
+
+          {pestanaActiva === 'seccion9-3' && (
+            <Seccion9_3 onVolver={() => setPestanaActiva('seccion9')} onVolverSeccion={() => setPestanaActiva('principal')} />
+          )}
+
+          {['seccion10', 'seccion11', 'seccion12', 'seccion13', 'seccion14'].includes(pestanaActiva) && (
             <div className="content-box-wide space-y-6">
               <div className="flex items-center gap-2 text-sm font-semibold text-slate-700 bg-slate-100 p-3 rounded-lg border border-slate-200">
                 <button onClick={() => setPestanaActiva('principal')} className="text-blue-700 hover:underline cursor-pointer bg-transparent border-none">

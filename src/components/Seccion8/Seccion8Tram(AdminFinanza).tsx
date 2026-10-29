@@ -20,8 +20,16 @@ import Seccion8TramAdminFinanza3, {
   FichaAmpliacionGiro,
   FichaCambioGiroPatente
 } from './Seccion8Tram(AdminFinanza)3';
-import Seccion8TramAdminFinanza4 from './Seccion8Tram(AdminFinanza)4';
-import Seccion8TramAdminFinanza5 from './Seccion8Tram(AdminFinanza)5';
+import Seccion8TramAdminFinanza4, {
+  FichaBeneficioRebajaAseo,
+  FichaCertificadoDeudaAseo,
+  FichaCertificadoNoDeudaAseo,
+  FichaConveniosPagoAseo
+} from './Seccion8Tram(AdminFinanza)4';
+import Seccion8TramAdminFinanza5, {
+  VistaTramitesEmprendimiento,
+  VistaPermisosPersaNeptuno
+} from './Seccion8Tram(AdminFinanza)5';
 
 const tramitePatenteMicroempresaFamiliar = 'Patente Comercial Micro Empresa Familiares';
 const tramitePatenteMicroempresaFamiliarCopropiedad = 'Patente Comercial Micro Empresa Familiares Copropiedad';
@@ -38,6 +46,12 @@ const tramitePermisoPersa = 'Permiso de Persa Los Tamarindos y/o Santa Marta';
 const tramitePermisoEstacionado = 'Permiso Estacionado';
 const tramiteAmpliacionGiro = 'Ampliación de Giro de Patente y permisos Comercial';
 const tramiteCambioGiro = 'Cambio de Giro Patente y Permisos Comerciales';
+const tramiteBeneficioRebajaAseo = 'Beneficio de exención o rebaja por Derechos de Aseo Domiciliario';
+const tramiteCertificadoDeudaAseo = 'Certificado de Deuda, Derechos de Aseo domiciliario';
+const tramiteCertificadoNoDeudaAseo = 'Certificado de No Deuda, Derechos de Aseo domiciliario';
+const tramiteConveniosPagoAseo = 'Convenios de Pago';
+const tramiteEmprendimientos = 'Trámites Emprendimientos';
+const tramitePermisosUsoPersaNeptuno = 'Trámites para Permisos de Uso Persa Neptuno';
 
 interface Seccion8TramAdminFinanzaProps {
   onVolver: () => void;
@@ -74,6 +88,12 @@ export default function Seccion8TramAdminFinanza({
   const esPermisoEstacionado = tramiteSeleccionado === tramitePermisoEstacionado;
   const esAmpliacionGiro = tramiteSeleccionado === tramiteAmpliacionGiro;
   const esCambioGiro = tramiteSeleccionado === tramiteCambioGiro;
+  const esBeneficioRebajaAseo = tramiteSeleccionado === tramiteBeneficioRebajaAseo;
+  const esCertificadoDeudaAseo = tramiteSeleccionado === tramiteCertificadoDeudaAseo;
+  const esCertificadoNoDeudaAseo = tramiteSeleccionado === tramiteCertificadoNoDeudaAseo;
+  const esConveniosPagoAseo = tramiteSeleccionado === tramiteConveniosPagoAseo;
+  const esTramitesEmprendimiento = tramiteSeleccionado === tramiteEmprendimientos;
+  const esPermisosUsoPersaNeptuno = tramiteSeleccionado === tramitePermisosUsoPersaNeptuno;
 
   return (
     <div className="content-box-wide space-y-6 pt-2">
@@ -114,6 +134,18 @@ export default function Seccion8TramAdminFinanza({
           {tramiteSeleccionado
             ? esPatenteProfesional
               ? 'Información del trámite de Patente Profesional'
+              : esBeneficioRebajaAseo
+                ? 'Información del Beneficio de Rebaja por Derechos de Aseo Domiciliario'
+              : esCertificadoDeudaAseo
+                ? 'Información del Certificado de Deuda de Derechos de Aseo'
+              : esCertificadoNoDeudaAseo
+                ? 'Información del Certificado de No Deuda de Derechos de Aseo'
+              : esConveniosPagoAseo
+                ? 'Información de Convenios de Pago'
+              : esTramitesEmprendimiento
+                ? 'Trámites de Emprendimiento'
+              : esPermisosUsoPersaNeptuno
+                ? 'Trámites para Permisos de Uso Persa Neptuno'
               : esAmpliacionGiro
                 ? 'Información del trámite de Ampliación de Giro de Patente Comercial'
               : esCambioGiro
@@ -148,6 +180,18 @@ export default function Seccion8TramAdminFinanza({
       {tramiteSeleccionado ? (
         esPatenteProfesional
           ? <FichaPatenteProfesional nombreTramite={tramiteSeleccionado} />
+          : esBeneficioRebajaAseo
+            ? <FichaBeneficioRebajaAseo />
+          : esCertificadoDeudaAseo
+            ? <FichaCertificadoDeudaAseo />
+          : esCertificadoNoDeudaAseo
+            ? <FichaCertificadoNoDeudaAseo />
+          : esConveniosPagoAseo
+            ? <FichaConveniosPagoAseo />
+          : esTramitesEmprendimiento
+            ? <VistaTramitesEmprendimiento />
+          : esPermisosUsoPersaNeptuno
+            ? <VistaPermisosPersaNeptuno />
           : esAmpliacionGiro
             ? <FichaAmpliacionGiro />
           : esCambioGiro
