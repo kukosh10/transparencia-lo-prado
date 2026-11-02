@@ -5,6 +5,18 @@ interface Props {
   onVolver: () => void;
 }
 
+const mesesSinDatos = [
+  'Marzo',
+  'Septiembre'
+];
+
 export default function Seccion9_3_Benef_Sub_Agua2011({ tipoNomina, onVolver }: Props) {
-  return <Seccion9_3_Benef_Sub_Agua anio="2011" tipoNomina={tipoNomina} onVolver={onVolver} />;
+  return (
+    <Seccion9_3_Benef_Sub_Agua
+      anio="2011"
+      tipoNomina={tipoNomina}
+      onVolver={onVolver}
+      mesesSinDatos={mesesSinDatos}
+    />
+  );
 }

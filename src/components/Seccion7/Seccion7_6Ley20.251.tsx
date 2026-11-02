@@ -37,18 +37,7 @@ const registrosPorAnio: Record<string, RegularizacionLey20251[]> = {
   '2015': [],
   '2014': [],
   '2013': [],
-  '2012': [{
-    denominacion: 'REGULARIZACION LEY 20250',
-    tipoNorma: 'Actos Administrativos',
-    numero: '1',
-    nombreTitulo: 'VIVIENDA',
-    fecha: '07.05.2012',
-    fechaPublicacion: 'Página Web (05.06.2013)',
-    tieneEfectosGenerales: 'No',
-    ultimaActualizacion: 'Sin Modificación',
-    descripcion: 'REGULARIZACION',
-    enlacePublicacion: ''
-  }],
+  '2012': [],
   '2011': [
     crearRegistro('45', '28.11.2011'),
     crearRegistro('44', '28.11.2011'),

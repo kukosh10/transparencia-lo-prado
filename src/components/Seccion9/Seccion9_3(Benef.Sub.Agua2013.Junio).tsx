@@ -1,0 +1,80 @@
+import Seccion9_3_N_B_Sub_Fam2015_Mayo from './Seccion9_3(N.B.Sub.Fam2015.Mayo)';
+
+const beneficiarios = [
+  ['VALENCIA', 'IBACACHE', 'ROSA GUILLERMINA'],
+  ['OLIVARES', 'LAZO', 'JUAN ENRIQUE'],
+  ['VARGAS', 'VÁSQUEZ', 'ERIKA ELIANA'],
+  ['SANDER', 'NEIRA', 'ROSA DEL CARMEN'],
+  ['REBOLLEDO', 'CERDA', 'OLGA DE LAS MERCEDES'],
+  ['RIQUELME', 'OLIVARES', 'PAOLA ANDREA'],
+  ['LARAÑA', 'VELOZ', 'EDUARDO ENRIQUE'],
+  ['LARENAS', 'MIRANDA', 'RENÉ NATÁN'],
+  ['ESPINOZA', 'AMIGO', 'IRMA ROSA'],
+  ['CARRILLO', 'NÚÑEZ', 'SILVIA'],
+  ['ROJAS', 'GONZÁLEZ', 'MARÍA REBECA'],
+  ['ASCENCIO', 'GATICA', 'NUBIA DEL CARMEN'],
+  ['RIVERA', 'MATUS', 'JOSÉ EDUARDO'],
+  ['ARAVENA', 'GÓMEZ', 'RUTH MARÍA'],
+  ['LEIVA', 'NAURRETE', 'MARÍA ORMILDA'],
+  ['VALDEBENITO', 'CEA', 'ELCIRA'],
+  ['MONTENEGRO', 'DÍAZ', 'LUIS FERNANDO'],
+  ['CARRIZO', 'URZÚA', 'JUAN ORLANDO'],
+  ['CANALES', 'VEGA', 'GUILLERMINA RUTH'],
+  ['LATORRE', 'CHEYSSAL', 'ÉRICA INÉS'],
+  ['BÁEZ', 'BRAVO', 'ADRIANA DE LAS MERCEDES'],
+  ['FERNÁNDEZ', 'ORTEGA', 'LUISA DEL TRÁNSITO'],
+  ['SOTO', 'PARRA', 'CARMEN GLORIA'],
+  ['YÁÑEZ', 'OSSES', 'MARÍA SUSANA'],
+  ['ALISTE', 'NÚÑEZ', 'BERNARDA DE LAS MERCEDES'],
+  ['GONZÁLEZ', 'TORO', 'MANUEL SERGIO'],
+  ['FUENZALIDA', 'BECERRA', 'ÁNGEL MARIO'],
+  ['TAPIA', 'GONZÁLEZ', 'HUGO RÍOS'],
+  ['SEPÚLVEDA', 'CANCINO', 'JOSÉ ÁNGEL'],
+  ['DÍAZ', 'NAVIA', 'LIDIA OLAYS'],
+  ['RAMÍREZ', 'SANHUEZA', 'SILVIA DEL CARMEN'],
+  ['BASTÍAS', 'STUARDO', 'ANA MATILDE'],
+  ['MEZA', 'LARA', 'HUGO DEL CARMEN'],
+  ['CONEJERO', 'RIVERA', 'JOSÉ ERNESTO'],
+  ['RAMÍREZ', 'URETA', 'RAQUEL'],
+  ['BARRÍA', 'FLORES', 'JOSÉ RAÚL'],
+  ['ROJAS', 'ARRIAGADA', 'ROGELIO ABELINO'],
+  ['COLLÍ', 'LANDEROS', 'JUAN'],
+  ['LÓPEZ', 'MENESES', 'ELIANA DEL CARMEN'],
+  ['HUENULAF', 'LINCOPI', 'GUMERCINDA MODESTA'],
+  ['CAÑETE', 'HERRERA', 'MARÍA DE LAS MERCEDES'],
+  ['ESPINOSA', 'LUCERO', 'SILVIA DEL CARMEN'],
+  ['CASTRO', 'GONZÁLEZ', 'MANUEL CÉSAR'],
+  ['PLAZA', 'LAURA ROSA', 'CLARA'],
+  ['MUÑOZ', 'HORMAZÁBAL', 'JAIME GUILLERMO'],
+  ['ARAYA', 'GUERRA', 'JOSÉ DOMINGO MARÍA'],
+  ['SOTO', 'PARRA', 'TERESA'],
+  ['TAPIA', 'SILVA', 'ISRAEL JOAQUÍN'],
+  ['MANZOR', 'CARRASCO', 'JOVINA DEL CARMEN'],
+  ['BARAHONA', 'CERDA', 'MARÍA SOFÍA'],
+  ['VALDIVIESO', 'ESCÁRATE', 'CARLOTA DOMITILA'],
+  ['GARRIDO', 'TORRES', 'GUADALUPE CUPERTINA'],
+  ['BARRIENTOS', 'VALENZUELA', 'HÉCTOR HUGO'],
+  ['GIL', 'HERRERA', 'MÓNICA DEL CARMEN'],
+  ['PINO', 'BOMBAL', 'OLGA DEL CARMEN'],
+  ['ALFARO', 'JUANA', 'SABINA'],
+  ['SOTO', 'SERGIO', 'MARTA'],
+  ['TRAIPE', 'SÁNCHEZ', 'FRANCISCA'],
+  ['BARRIENTOS', 'SÁNCHEZ', 'JAIME ORLANDO'],
+  ['ORTEGA', 'RETAMAL', 'GREGORIA ALICIA'],
+  ['ARÉVALO', 'VILLALÓN', 'ELENA ISABEL'],
+  ['GONZÁLEZ', 'OYARZÚN', 'ANALICIA'],
+  ['RIVERO', 'CORONADO', 'ESTER ROSA']
+] as const;
+
+export default function Seccion9_3_Benef_Sub_Agua2013_Junio() {
+  return (
+    <Seccion9_3_N_B_Sub_Fam2015_Mayo
+      mes="Junio"
+      anio="2013"
+      programa="Subsidio Agua Potable"
+      beneficiariosPersonalizados={beneficiarios}
+      acto="Decreto Alcaldicio N° 1427"
+      fechaOtorgamiento="01.06.2013"
+    />
+  );
+}

@@ -1,0 +1,98 @@
+import Seccion9_3_N_B_Sub_Fam2015_Mayo from './Seccion9_3(N.B.Sub.Fam2015.Mayo)';
+
+const beneficiarios = [
+  ['ORELLANA', 'CAMPOS', 'JORGE PATRICIO'],
+  ['SALAZAR', 'PAVEZ', 'AURORA DEL CARMEN'],
+  ['LILLO', 'VARAS', 'MARÍA DE LAS NIEVES'],
+  ['ESPINA', 'REYES', 'MARGARITA DE LAS MERCEDES'],
+  ['FRANKE', 'ROBLEDO', 'ELIZABETH DEL CARMEN'],
+  ['GARCÍA', 'FERNÁNDEZ', 'PAMELA ANDREA'],
+  ['CANALES', 'VENEGAS', 'ELIANA DEL CARMEN'],
+  ['CALDERÓN', 'SÁNCHEZ', 'LOLA TERESA'],
+  ['RAMÍREZ', 'SALAS', 'JUANA'],
+  ['VILAR', 'VILAR', 'LEOPOLDO ALIRO'],
+  ['SALGADO', 'MORALES', 'JOSÉ NELSON'],
+  ['CORTÉS', 'ARÉVALO', 'MÓNICA CECILIA'],
+  ['MOYA', 'LÓPEZ', 'MARCIA'],
+  ['ARIZ', 'MIRANDA', 'PATRICIA'],
+  ['SAAVEDRA', 'SÁNCHEZ', 'MARÍA DEL PILAR'],
+  ['CORTEZ', 'MORALES', 'EUGENIA'],
+  ['VARGAS', 'SOTO', 'ADRIANA CAROLINA'],
+  ['MARTÍNEZ', 'GUTIÉRREZ', 'MARCELA'],
+  ['JARAMILLO', 'RIVERA', 'MARÍA PAZ'],
+  ['CARRASCO', 'CARRASCO', 'SUSANA'],
+  ['FRIZ', 'PARRA', 'ALINA'],
+  ['NAVARRO', 'GÁLVEZ', 'NATALIA'],
+  ['FUENTES', 'MELÉNDEZ', 'MARTA DEL CARMEN'],
+  ['MACHUCA', 'MARTÍNEZ', 'LUCÍA'],
+  ['CÓRDOBA', 'CÁCERES', 'ELIZABETH'],
+  ['MORALES', 'LÓPEZ', 'PATRICIA'],
+  ['ALVARADO', 'MORALES', 'ELENA'],
+  ['SANDOVAL', 'ROSAS', 'DANIELA'],
+  ['VALENZUELA', 'MUÑOZ', 'MARÍA ELISA'],
+  ['LÓPEZ', 'MORALES', 'EVA'],
+  ['PÉREZ', 'NAVARRO', 'KATHERINE'],
+  ['GUZMÁN', 'GONZÁLEZ', 'ROSA DEL CARMEN'],
+  ['ROJAS', 'CARRASCO', 'MARTA'],
+  ['HERNÁNDEZ', 'PARRA', 'ROCÍO'],
+  ['BARRA', 'URRUTIA', 'MARGARITA'],
+  ['MIRANDA', 'DÍAZ', 'PABLO'],
+  ['PAREDES', 'MILLAR', 'JUANA'],
+  ['ARAYA', 'TAPIA', 'LUCÍA'],
+  ['DURÁN', 'CARRASCO', 'ALEXANDRA'],
+  ['RIVERA', 'PÉREZ', 'MARGARITA'],
+  ['PIZARRO', 'NOÉ', 'MARTA'],
+  ['MARTÍNEZ', 'SANDOVAL', 'JULIA'],
+  ['FLORES', 'SANTIBAÑEZ', 'ELIANA'],
+  ['SANDOVAL', 'GONZÁLEZ', 'ANA'],
+  ['MIÑANO', 'SEPÚLVEDA', 'JACQUELINE'],
+  ['VARGAS', 'REYES', 'MARTA'],
+  ['QUINTANA', 'BARRIA', 'MARÍA ESTELA'],
+  ['ROJAS', 'MORALES', 'ELENA'],
+  ['MELÉNDEZ', 'PAINE', 'LORENA'],
+  ['CASTILLO', 'MORALES', 'MIRTA'],
+  ['MARTÍNEZ', 'CORTÉS', 'OLGA'],
+  ['NÚÑEZ', 'LAVANCHY', 'MARÍA DEL CARMEN'],
+  ['MORALES', 'MORALES', 'MÓNICA'],
+  ['SEPÚLVEDA', 'RIVERA', 'LUCÍA'],
+  ['ARAVENA', 'VARGAS', 'ISABEL'],
+  ['BUSTOS', 'MORALES', 'LUISA'],
+  ['LEIVA', 'BARRÍA', 'MIRIAM'],
+  ['MÁRQUEZ', 'MARTÍNEZ', 'JULIETA'],
+  ['PÉREZ', 'ALVARADO', 'CARMEN'],
+  ['PEREIRA', 'GONZÁLEZ', 'SOLEDAD'],
+  ['CARRASCO', 'LAGOS', 'MARÍA CECILIA'],
+  ['DÍAZ', 'HERNÁNDEZ', 'JUANA'],
+  ['CUBILLOS', 'MORALES', 'MIGUEL'],
+  ['SEGOVIA', 'RIVERA', 'CARMEN'],
+  ['HERRERA', 'FONSECA', 'PAULA'],
+  ['MARTÍNEZ', 'TORRES', 'RUTH'],
+  ['ROJAS', 'PIZARRO', 'SERGIO'],
+  ['PAREDES', 'GONZÁLEZ', 'MARÍA INÉS'],
+  ['ROMERO', 'MORALES', 'LIZETH'],
+  ['MELÉNDEZ', 'AQUINO', 'MIRNA'],
+  ['PEREIRA', 'MARTÍNEZ', 'CLAUDIA'],
+  ['SÁNCHEZ', 'MORALES', 'VERÓNICA'],
+  ['PARRA', 'ESCUDERO', 'ANGELICA'],
+  ['MONTT', 'JOFRE', 'KARIN'],
+  ['BARRA', 'PÉREZ', 'JOSÉ MANUEL'],
+  ['CÁRDENAS', 'PINO', 'CARLA'],
+  ['MALDONADO', 'SILVA', 'MARTA'],
+  ['ROJAS', 'SOTO', 'JAVIERA'],
+  ['MORALES', 'LAGOS', 'PATRICIA'],
+  ['MELÉNDEZ', 'MORALES', 'BEATRIZ'],
+  ['CÁCERES', 'PEREIRA', 'AGUSTINA']
+] as const;
+
+export default function Seccion9_3_Benef_Sub_Agua2012_Enero() {
+  return (
+    <Seccion9_3_N_B_Sub_Fam2015_Mayo
+      mes="Enero"
+      anio="2012"
+      programa="Subsidio Agua Potable"
+      beneficiariosPersonalizados={beneficiarios}
+      acto="Decreto Alcaldicio N° 2811"
+      fechaOtorgamiento="01.01.2012"
+    />
+  );
+}
