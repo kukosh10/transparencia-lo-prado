@@ -1,11 +1,20 @@
 import { ArrowLeft, ChevronRight } from 'lucide-react';
 import { useState } from 'react';
 import Seccion9_3_N_B_Sub_Fam2012_Enero from './Seccion9_3(N.B.Sub.Fam2012.Enero)';
+import Seccion9_3_N_B_Sub_Fam2009_Enero from './Seccion9_3(N.B.Sub.Fam2009.Enero)';
+import Seccion9_3_N_B_Sub_Fam2009_Febrero from './Seccion9_3(N.B.Sub.Fam2009.Febrero)';
 import Seccion9_3_N_B_Sub_Fam2011_Enero from './Seccion9_3(N.B.Sub.Fam2011.Enero)';
 import Seccion9_3_N_B_Sub_Fam2011_Febrero from './Seccion9_3(N.B.Sub.Fam2011.Febrero)';
 import Seccion9_3_N_B_Sub_Fam2011_Marzo from './Seccion9_3(N.B.Sub.Fam2011.Marzo)';
 import Seccion9_3_N_B_Sub_Fam2011_Abril from './Seccion9_3(N.B.Sub.Fam2011.Abril)';
 import Seccion9_3_N_B_Sub_Fam2011_Mayo from './Seccion9_3(N.B.Sub.Fam2011.Mayo)';
+import Seccion9_3_N_B_Sub_Fam2011_Junio from './Seccion9_3(N.B.Sub.Fam2011.Junio)';
+import Seccion9_3_N_B_Sub_Fam2011_Julio from './Seccion9_3(N.B.Sub.Fam2011.Julio)';
+import Seccion9_3_N_B_Sub_Fam2011_Agosto from './Seccion9_3(N.B.Sub.Fam2011.Agosto)';
+import Seccion9_3_N_B_Sub_Fam2011_Septiembre from './Seccion9_3(N.B.Sub.Fam2011.Septiembre)';
+import Seccion9_3_N_B_Sub_Fam2011_Octubre from './Seccion9_3(N.B.Sub.Fam2011.Octubre)';
+import Seccion9_3_N_B_Sub_Fam2011_Noviembre from './Seccion9_3(N.B.Sub.Fam2011.Noviembre)';
+import Seccion9_3_N_B_Sub_Fam2011_Diciembre from './Seccion9_3(N.B.Sub.Fam2011.Diciembre)';
 import Seccion9_3_N_B_Sub_Fam2012_Febrero from './Seccion9_3(N.B.Sub.Fam2012.Febrero)';
 import Seccion9_3_N_B_Sub_Fam2012_Marzo from './Seccion9_3(N.B.Sub.Fam2012.Marzo)';
 import Seccion9_3_N_B_Sub_Fam2012_Abril from './Seccion9_3(N.B.Sub.Fam2012.Abril)';
@@ -115,6 +124,10 @@ export default function Seccion9_3_N_B_Sub_Fam2016({
 
       {mesSeleccionado && tipoNomina === 'Nómina de Beneficiarios Subsidio Familiar' && anio === '2011' && mesSeleccionado === 'Enero' ? (
         <Seccion9_3_N_B_Sub_Fam2011_Enero />
+      ) : mesSeleccionado && tipoNomina === 'Nómina de Beneficiarios Subsidio Familiar' && anio === '2009' && mesSeleccionado === 'Enero' ? (
+        <Seccion9_3_N_B_Sub_Fam2009_Enero />
+      ) : mesSeleccionado && tipoNomina === 'Nómina de Beneficiarios Subsidio Familiar' && anio === '2009' && mesSeleccionado === 'Febrero' ? (
+        <Seccion9_3_N_B_Sub_Fam2009_Febrero />
       ) : mesSeleccionado && tipoNomina === 'Nómina de Beneficiarios Subsidio Familiar' && anio === '2011' && mesSeleccionado === 'Febrero' ? (
         <Seccion9_3_N_B_Sub_Fam2011_Febrero />
       ) : mesSeleccionado && tipoNomina === 'Nómina de Beneficiarios Subsidio Familiar' && anio === '2011' && mesSeleccionado === 'Marzo' ? (
@@ -123,6 +136,20 @@ export default function Seccion9_3_N_B_Sub_Fam2016({
         <Seccion9_3_N_B_Sub_Fam2011_Abril />
       ) : mesSeleccionado && tipoNomina === 'Nómina de Beneficiarios Subsidio Familiar' && anio === '2011' && mesSeleccionado === 'Mayo' ? (
         <Seccion9_3_N_B_Sub_Fam2011_Mayo />
+      ) : mesSeleccionado && tipoNomina === 'Nómina de Beneficiarios Subsidio Familiar' && anio === '2011' && mesSeleccionado === 'Junio' ? (
+        <Seccion9_3_N_B_Sub_Fam2011_Junio />
+      ) : mesSeleccionado && tipoNomina === 'Nómina de Beneficiarios Subsidio Familiar' && anio === '2011' && mesSeleccionado === 'Julio' ? (
+        <Seccion9_3_N_B_Sub_Fam2011_Julio />
+      ) : mesSeleccionado && tipoNomina === 'Nómina de Beneficiarios Subsidio Familiar' && anio === '2011' && mesSeleccionado === 'Agosto' ? (
+        <Seccion9_3_N_B_Sub_Fam2011_Agosto />
+      ) : mesSeleccionado && tipoNomina === 'Nómina de Beneficiarios Subsidio Familiar' && anio === '2011' && mesSeleccionado === 'Septiembre' ? (
+        <Seccion9_3_N_B_Sub_Fam2011_Septiembre />
+      ) : mesSeleccionado && tipoNomina === 'Nómina de Beneficiarios Subsidio Familiar' && anio === '2011' && mesSeleccionado === 'Octubre' ? (
+        <Seccion9_3_N_B_Sub_Fam2011_Octubre />
+      ) : mesSeleccionado && tipoNomina === 'Nómina de Beneficiarios Subsidio Familiar' && anio === '2011' && mesSeleccionado === 'Noviembre' ? (
+        <Seccion9_3_N_B_Sub_Fam2011_Noviembre />
+      ) : mesSeleccionado && tipoNomina === 'Nómina de Beneficiarios Subsidio Familiar' && anio === '2011' && mesSeleccionado === 'Diciembre' ? (
+        <Seccion9_3_N_B_Sub_Fam2011_Diciembre />
       ) : mesSeleccionado && tipoNomina === 'Nómina de Beneficiarios Subsidio Familiar' && anio === '2012' && mesSeleccionado === 'Enero' ? (
         <Seccion9_3_N_B_Sub_Fam2012_Enero />
       ) : mesSeleccionado && tipoNomina === 'Nómina de Beneficiarios Subsidio Familiar' && anio === '2012' && mesSeleccionado === 'Febrero' ? (

@@ -188,7 +188,10 @@ const filasPorPagina = 20;
 interface Props {
   mes?: string;
   anio?: string;
+  programa?: string;
+  valorNoAplica?: string;
   beneficiariosPersonalizados?: readonly (readonly [string, string, string])[];
+  actosPersonalizados?: readonly (string | undefined)[];
   acto?: string;
   fechaOtorgamiento?: string;
 }
@@ -196,7 +199,10 @@ interface Props {
 export default function Seccion9_3_N_B_Sub_Fam2015_Mayo({
   mes = 'Mayo',
   anio = '2015',
+  programa = 'Subsidio Familiar',
+  valorNoAplica = 'No aplica',
   beneficiariosPersonalizados,
+  actosPersonalizados,
   acto = 'Decreto Alcaldicio N° 945 de 04.05.15',
   fechaOtorgamiento = '01.06.2015'
 }: Props) {
@@ -205,19 +211,21 @@ export default function Seccion9_3_N_B_Sub_Fam2015_Mayo({
   const nomina = beneficiariosPersonalizados ?? beneficiarios;
   const resultados = useMemo(() => {
     const termino = busqueda.trim().toLocaleLowerCase('es');
-    return nomina.filter(([paterno, materno, nombres]) =>
-      `${paterno} ${materno} ${nombres}`.toLocaleLowerCase('es').includes(termino)
-    );
+    return nomina
+      .map((beneficiario, indice) => ({ beneficiario, indice }))
+      .filter(({ beneficiario: [paterno, materno, nombres] }) =>
+        `${paterno} ${materno} ${nombres}`.toLocaleLowerCase('es').includes(termino)
+      );
   }, [busqueda, nomina]);
   const totalPaginas = Math.max(1, Math.ceil(resultados.length / filasPorPagina));
   const paginaActual = Math.min(pagina, totalPaginas);
   const filas = resultados.slice((paginaActual - 1) * filasPorPagina, paginaActual * filasPorPagina);
 
   return (
-    <section aria-label={`Nómina de Subsidio Familiar de ${mes.toLowerCase()} ${anio}`} className="space-y-4">
+    <section aria-label={`Nómina de ${programa} de ${mes.toLowerCase()} ${anio}`} className="space-y-4">
       <header className="flex flex-wrap items-end justify-between gap-3">
         <div>
-          <h4 className="text-base font-semibold text-slate-900">Subsidio Familiar · {mes} {anio}</h4>
+          <h4 className="text-base font-semibold text-slate-900">{programa} · {mes} {anio}</h4>
           <p className="mt-1 text-xs text-slate-500">{resultados.length} beneficiarios</p>
         </div>
         <label className="w-full text-xs font-medium text-slate-600 sm:w-72">
@@ -250,15 +258,15 @@ export default function Seccion9_3_N_B_Sub_Fam2015_Mayo({
             </tr>
           </thead>
           <tbody>
-            {filas.map(([paterno, materno, nombres], index) => (
-              <tr key={`${paterno}-${materno}-${nombres}-${index}`} className="even:bg-slate-50/70">
-                <td className="border-b border-slate-100 px-3 py-2 text-blue-800">Subsidio Familiar</td>
+            {filas.map(({ beneficiario: [paterno, materno, nombres], indice }) => (
+              <tr key={`${paterno}-${materno}-${nombres}-${indice}`} className="even:bg-slate-50/70">
+                <td className="border-b border-slate-100 px-3 py-2 text-blue-800">{programa}</td>
                 <td className="border-b border-slate-100 px-3 py-2 text-slate-700">{paterno}</td>
                 <td className="border-b border-slate-100 px-3 py-2 text-slate-700">{materno}</td>
                 <td className="border-b border-slate-100 px-3 py-2 font-medium text-slate-800">{nombres}</td>
-                <td className="border-b border-slate-100 px-3 py-2 text-slate-500">No aplica</td>
-                <td className="border-b border-slate-100 px-3 py-2 text-slate-500">No aplica</td>
-                <td className="border-b border-slate-100 px-3 py-2 text-slate-700">{acto}</td>
+                <td className="border-b border-slate-100 px-3 py-2 text-slate-500">{valorNoAplica}</td>
+                <td className="border-b border-slate-100 px-3 py-2 text-slate-500">{valorNoAplica}</td>
+                <td className="border-b border-slate-100 px-3 py-2 text-slate-700">{actosPersonalizados?.[indice] ?? acto}</td>
                 <td className="border-b border-slate-100 px-3 py-2 text-slate-700">{fechaOtorgamiento}</td>
               </tr>
             ))}

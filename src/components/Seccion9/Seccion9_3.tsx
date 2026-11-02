@@ -1,5 +1,13 @@
 import { ArrowLeft, ChevronRight } from 'lucide-react';
 import { useState } from 'react';
+import Seccion9_3_Benef_Sub_Agua2016 from './Seccion9_3(Benef.Sub.Agua2016)';
+import Seccion9_3_Benef_Sub_Agua2015 from './Seccion9_3(Benef.Sub.Agua2015)';
+import Seccion9_3_Benef_Sub_Agua2014 from './Seccion9_3(Benef.Sub.Agua2014)';
+import Seccion9_3_Benef_Sub_Agua2013 from './Seccion9_3(Benef.Sub.Agua2013)';
+import Seccion9_3_Benef_Sub_Agua2012 from './Seccion9_3(Benef.Sub.Agua2012)';
+import Seccion9_3_Benef_Sub_Agua2011 from './Seccion9_3(Benef.Sub.Agua2011)';
+import Seccion9_3_Benef_Sub_Agua2010 from './Seccion9_3(Benef.Sub.Agua2010)';
+import Seccion9_3_Benef_Sub_Agua2009 from './Seccion9_3(Benef.Sub.Agua2009)';
 import Seccion9_3_N_B_Sub_Fam2016 from './Seccion9_3(N.B.Sub.Fam2016)';
 import Seccion9_3_N_B_Sub_Fam2015 from './Seccion9_3(N.B.Sub.Fam2015)';
 import Seccion9_3_N_B_Sub_Fam2014 from './Seccion9_3(N.B.Sub.Fam2014)';
@@ -36,6 +44,29 @@ export default function Seccion9_3({ onVolver, onVolverSeccion }: Seccion9Detall
   };
 
   const contenidoAnual = (() => {
+    if (tipologiaSeleccionada === 'subsidio-agua') {
+      switch (anioSeleccionado) {
+        case '2016':
+          return <Seccion9_3_Benef_Sub_Agua2016 {...propsAnual} />;
+        case '2015':
+          return <Seccion9_3_Benef_Sub_Agua2015 {...propsAnual} />;
+        case '2014':
+          return <Seccion9_3_Benef_Sub_Agua2014 {...propsAnual} />;
+        case '2013':
+          return <Seccion9_3_Benef_Sub_Agua2013 {...propsAnual} />;
+        case '2012':
+          return <Seccion9_3_Benef_Sub_Agua2012 {...propsAnual} />;
+        case '2011':
+          return <Seccion9_3_Benef_Sub_Agua2011 {...propsAnual} />;
+        case '2010':
+          return <Seccion9_3_Benef_Sub_Agua2010 {...propsAnual} />;
+        case '2009':
+          return <Seccion9_3_Benef_Sub_Agua2009 {...propsAnual} />;
+        default:
+          return null;
+      }
+    }
+
     switch (anioSeleccionado) {
       case '2016':
         return <Seccion9_3_N_B_Sub_Fam2016 anio="2016" {...propsAnual} />;
