@@ -16,8 +16,27 @@ import Seccion9_3_N_B_Sub_Fam2012 from './Seccion9_3(N.B.Sub.Fam2012)';
 import Seccion9_3_N_B_Sub_Fam2011 from './Seccion9_3(N.B.Sub.Fam2011)';
 import Seccion9_3_N_B_Sub_Fam2010 from './Seccion9_3(N.B.Sub.Fam2010)';
 import Seccion9_3_N_B_Sub_Fam2009 from './Seccion9_3(N.B.Sub.Fam2009)';
+import Seccion9_3NomBecas from './Seccion9_3NomBecas';
+import Seccion9_3AporteMuni from './Seccion9_3(AporteMuni)';
+import Seccion9_3AdultoMayor from './Seccion9_3(AdultoMayor)';
+import Seccion9_3BenefMedicamentos from './Seccion9_3(Benef.Medicamentos)';
+import Seccion9_3BenefMedicamentos2012 from './Seccion9_3(Benef.Medicamentos2012)';
+import Seccion9_3BenefMedicamentos2011 from './Seccion9_3(Benef.Medicamentos2011)';
+import Seccion9_3BenefMedicamentos2013 from './Seccion9_3(Benef.Medicamentos2013)';
+import Seccion9_3BenefMedicamentos2014 from './Seccion9_3(Benef.Medicamentos2014)';
+import Seccion9_3BenefMedicamentos2015 from './Seccion9_3(Benef.Medicamentos2015)';
+import Seccion9_3BenefMedicamentos2016 from './Seccion9_3(Benef.Medicamentos2016)';
+import Seccion9_3DerechoMuni from './Seccion9_3(DerechoMuni)';
 
 const anios = ['2016', '2015', '2014', '2013', '2012', '2011', '2010', '2009'];
+const mesesDerechoMuni = [
+  'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
+  'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'
+];
+const mesesDerechoMuni2014SinDatos = [
+  'Enero', 'Febrero', 'Abril', 'Julio', 'Agosto', 'Septiembre',
+  'Octubre', 'Noviembre', 'Diciembre'
+];
 const tipologias = [
   { value: 'subsidio-familiar', label: 'Nómina de Beneficiarios Subsidio Familiar' },
   { value: 'subsidio-agua', label: 'Nómina de Beneficiarios Subsidio de Agua' },
@@ -65,6 +84,72 @@ export default function Seccion9_3({ onVolver, onVolverSeccion }: Seccion9Detall
         default:
           return null;
       }
+    }
+
+    if (tipologiaSeleccionada === 'becas' && anioSeleccionado) {
+      return <Seccion9_3NomBecas anio={anioSeleccionado} {...propsAnual} />;
+    }
+
+    if (tipologiaSeleccionada === 'adulto-mayor' && anioSeleccionado) {
+      return <Seccion9_3AdultoMayor anio={anioSeleccionado} {...propsAnual} />;
+    }
+
+    if (tipologiaSeleccionada === 'medicamentos') {
+      switch (anioSeleccionado) {
+        case '2011':
+          return <Seccion9_3BenefMedicamentos2011 {...propsAnual} />;
+        case '2010':
+          return (
+            <Seccion9_3BenefMedicamentos
+              anio="2010"
+              {...propsAnual}
+              registrosPorMes={{}}
+            />
+          );
+        case '2009':
+          return (
+            <Seccion9_3BenefMedicamentos
+              anio="2009"
+              {...propsAnual}
+              registrosPorMes={{}}
+            />
+          );
+        case '2012':
+          return <Seccion9_3BenefMedicamentos2012 {...propsAnual} />;
+        case '2013':
+          return <Seccion9_3BenefMedicamentos2013 {...propsAnual} />;
+        case '2014':
+          return <Seccion9_3BenefMedicamentos2014 {...propsAnual} />;
+        case '2015':
+          return <Seccion9_3BenefMedicamentos2015 {...propsAnual} />;
+        case '2016':
+          return <Seccion9_3BenefMedicamentos2016 {...propsAnual} />;
+        default:
+          return null;
+      }
+    }
+
+    if (tipologiaSeleccionada === 'rebajas-derechos' && anioSeleccionado) {
+      if (anios.includes(anioSeleccionado)) {
+        return (
+          <Seccion9_3DerechoMuni
+            anio={anioSeleccionado}
+            {...propsAnual}
+            mesesSinDatos={anioSeleccionado === '2014' ? mesesDerechoMuni2014SinDatos : mesesDerechoMuni}
+          />
+        );
+      }
+
+      return (
+        <article className="rounded-xl border border-dashed border-slate-300 bg-white px-5 py-8 text-center shadow-xs">
+          <h3 className="text-base font-semibold text-slate-900">
+            Información pendiente · Rebajas Derechos Municipales {anioSeleccionado}
+          </h3>
+          <p className="mt-2 text-sm text-slate-600">
+            Aún no se han recibido los registros de este año.
+          </p>
+        </article>
+      );
     }
 
     switch (anioSeleccionado) {
@@ -129,7 +214,9 @@ export default function Seccion9_3({ onVolver, onVolverSeccion }: Seccion9Detall
         </select>
       </div>
 
-      {anioSeleccionado ? (
+      {tipologiaSeleccionada === 'aporte-municipal' ? (
+        <Seccion9_3AporteMuni />
+      ) : anioSeleccionado ? (
         contenidoAnual
       ) : (
         <section aria-label="Años disponibles" className="grid grid-cols-2 gap-3 sm:grid-cols-4">

@@ -1,5 +1,16 @@
 import { ArrowLeft, ChevronRight } from 'lucide-react';
 import { useState } from 'react';
+import Seccion9_3_Benef_Sub_Agua2009_Abril from './Seccion9_3(Benef.Sub.Agua2009.Abril)';
+import Seccion9_3_Benef_Sub_Agua2009_Agosto from './Seccion9_3(Benef.Sub.Agua2009.Agosto)';
+import Seccion9_3_Benef_Sub_Agua2009_Febrero from './Seccion9_3(Benef.Sub.Agua2009.Febrero)';
+import Seccion9_3_Benef_Sub_Agua2009_Octubre from './Seccion9_3(Benef.Sub.Agua2009.Octubre)';
+import Seccion9_3_Benef_Sub_Agua2009_Julio from './Seccion9_3(Benef.Sub.Agua2009.Julio)';
+import Seccion9_3_Benef_Sub_Agua2009_Junio from './Seccion9_3(Benef.Sub.Agua2009.Junio)';
+import Seccion9_3_Benef_Sub_Agua2009_Mayo from './Seccion9_3(Benef.Sub.Agua2009.Mayo)';
+import Seccion9_3_Benef_Sub_Agua2009_Marzo from './Seccion9_3(Benef.Sub.Agua2009.Marzo)';
+import Seccion9_3_Benef_Sub_Agua2009_Noviembre from './Seccion9_3(Benef.Sub.Agua2009.Noviembre)';
+import Seccion9_3_Benef_Sub_Agua2009_Septiembre from './Seccion9_3(Benef.Sub.Agua2009.Septiembre)';
+import Seccion9_3_Benef_Sub_Agua2009_Diciembre from './Seccion9_3(Benef.Sub.Agua2009.Diciembre)';
 import Seccion9_3_Benef_Sub_Agua2010_Abril from './Seccion9_3(Benef.Sub.Agua2010.Abril)';
 import Seccion9_3_Benef_Sub_Agua2010_Agosto from './Seccion9_3(Benef.Sub.Agua2010.Agosto)';
 import Seccion9_3_Benef_Sub_Agua2010_Enero from './Seccion9_3(Benef.Sub.Agua2010.Enero)';
@@ -160,6 +171,28 @@ export default function Seccion9_3_Benef_Sub_Agua({
         <Seccion9_3_Benef_Sub_Agua2010_Septiembre />
       ) : mesSeleccionado === 'Noviembre' && anio === '2010' ? (
         <Seccion9_3_Benef_Sub_Agua2010_Noviembre />
+      ) : mesSeleccionado === 'Febrero' && anio === '2009' ? (
+        <Seccion9_3_Benef_Sub_Agua2009_Febrero />
+      ) : mesSeleccionado === 'Marzo' && anio === '2009' ? (
+        <Seccion9_3_Benef_Sub_Agua2009_Marzo />
+      ) : mesSeleccionado === 'Abril' && anio === '2009' ? (
+        <Seccion9_3_Benef_Sub_Agua2009_Abril />
+      ) : mesSeleccionado === 'Mayo' && anio === '2009' ? (
+        <Seccion9_3_Benef_Sub_Agua2009_Mayo />
+      ) : mesSeleccionado === 'Junio' && anio === '2009' ? (
+        <Seccion9_3_Benef_Sub_Agua2009_Junio />
+      ) : mesSeleccionado === 'Julio' && anio === '2009' ? (
+        <Seccion9_3_Benef_Sub_Agua2009_Julio />
+      ) : mesSeleccionado === 'Agosto' && anio === '2009' ? (
+        <Seccion9_3_Benef_Sub_Agua2009_Agosto />
+      ) : mesSeleccionado === 'Septiembre' && anio === '2009' ? (
+        <Seccion9_3_Benef_Sub_Agua2009_Septiembre />
+      ) : mesSeleccionado === 'Octubre' && anio === '2009' ? (
+        <Seccion9_3_Benef_Sub_Agua2009_Octubre />
+      ) : mesSeleccionado === 'Noviembre' && anio === '2009' ? (
+        <Seccion9_3_Benef_Sub_Agua2009_Noviembre />
+      ) : mesSeleccionado === 'Diciembre' && anio === '2009' ? (
+        <Seccion9_3_Benef_Sub_Agua2009_Diciembre />
       ) : mesSeleccionado === 'Enero' && anio === '2011' ? (
         <Seccion9_3_Benef_Sub_Agua2011_Enero />
       ) : mesSeleccionado === 'Febrero' && anio === '2011' ? (
