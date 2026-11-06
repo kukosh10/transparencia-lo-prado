@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Search, ChevronRight, Video, Mail, ExternalLink, Wrench, Home } from 'lucide-react';
+import { Search, ChevronRight, Video, Mail, Wrench, Home, Play } from 'lucide-react';
 import { seccionesHistoricas, antecedentesAdicionales } from './data';
 import logoMuni from './assets/logo muni.png';
 import munilogo from './assets/munilogo.png';
@@ -33,11 +33,33 @@ import Seccion7_5 from './components/Seccion7/Seccion7_5';
 import Seccion7_6 from './components/Seccion7/Seccion7_6';
 import Seccion7_7 from './components/Seccion7/Seccion7_7';
 import Seccion8Tram from './components/Seccion8/Seccion8Tram';
+import Seccion8TramSecreMuni from './components/Seccion8/Seccion8Tram(SecreMuni)';
 import Seccion8_1OtrosTramites from './components/Seccion8/Seccion8_1OtrosTramites';
 import Seccion9 from './components/Seccion9/Seccion9';
 import Seccion9_1 from './components/Seccion9/Seccion9_1';
 import Seccion9_2 from './components/Seccion9/Seccion9_2';
 import Seccion9_3 from './components/Seccion9/Seccion9_3';
+import Seccion10_1 from './components/Seccion10/Seccion10_1';
+import Seccion10_2 from './components/Seccion10/Seccion10_2';
+import Seccion10_3 from './components/Seccion10/Seccion10_3';
+import Seccion10_4 from './components/Seccion10/Seccion10_4';
+import Seccion10_5 from './components/Seccion10/Seccion10_5';
+import Seccion11_1 from './components/Seccion11/Seccion11_1';
+import Seccion11_2 from './components/Seccion11/Seccion11_2';
+import Seccion11_3 from './components/Seccion11/Seccion11_3';
+import Seccion11_4 from './components/Seccion11/Seccion11_4';
+import Seccion11_5 from './components/Seccion11/Seccion11_5';
+import Seccion12 from './components/Seccion12/Seccion12';
+import Seccion12_1 from './components/Seccion12/Seccion12_1';
+import Seccion12_2 from './components/Seccion12/Seccion12_2';
+import Seccion13 from './components/Seccion13/Seccion13';
+import Seccion14 from './components/Seccion14/Seccion14';
+import Ley20730 from './components/Antecedentes y sitios Rela/Ley20730';
+import OtrosAntecedentes from './components/Antecedentes y sitios Rela/OtrosAntecedentes';
+import AccesoInformacionPublica from './components/Antecedentes y sitios Rela/AccesoInformacionPublica';
+import CostosReproduccion from './components/Antecedentes y sitios Rela/CostosReproduccion';
+import OtrosSitiosRelacionados from './components/Antecedentes y sitios Rela/OtrosSitiosRelacionados';
+import MetasInstitucionales from './components/Antecedentes y sitios Rela/MetasInstitucionales';
 
 export default function App() {
   const [pestanaActiva, setPestanaActiva] = useState<string>('principal');
@@ -55,6 +77,7 @@ export default function App() {
   );
 
   const categoriaSeleccionada = antecedentesAdicionales.find(cat => cat.id === pestanaActiva);
+  const contenidoAncho = /^seccion1[123](?:-|$)/.test(pestanaActiva) || pestanaActiva === 'metas-institucionales';
 
   const manejarClickSeccion = (numeroSeccion: string, textoEnlace?: string) => {
     const textoLimpio = textoEnlace ? textoEnlace.toLowerCase().trim() : '';
@@ -149,10 +172,34 @@ export default function App() {
         setPestanaActiva('seccion9');
         break;
       case '10':
-        setPestanaActiva('seccion10');
+        if (textoLimpio.includes('norma general')) {
+          window.open('about:blank', '_blank', 'noopener,noreferrer');
+        } else if (textoLimpio.includes('mecanismos')) {
+          setPestanaActiva('seccion10-2');
+        } else if (textoLimpio.includes('consejo comunal')) {
+          setPestanaActiva('seccion10-3');
+        } else if (textoLimpio.includes('organizaciones sociales')) {
+          setPestanaActiva('seccion10-4');
+        } else if (textoLimpio.includes('comisión defensora') || textoLimpio.includes('comision defensora')) {
+          window.open('http://www.cdc.gob.cl/', '_blank', 'noopener,noreferrer');
+        } else {
+          setPestanaActiva('seccion10-1');
+        }
         break;
       case '11':
-        setPestanaActiva('seccion11');
+        if (textoLimpio.includes('presupuestos asignados')) {
+          setPestanaActiva('seccion11-1');
+        } else if (textoLimpio.includes('presupuesto aprobado')) {
+          setPestanaActiva('seccion11-2');
+        } else if (textoLimpio.includes('balance de la ejecución')) {
+          setPestanaActiva('seccion11-3');
+        } else if (textoLimpio.includes('estado de situación')) {
+          setPestanaActiva('seccion11-4');
+        } else if (textoLimpio.includes('presupuestos de pasivos')) {
+          setPestanaActiva('seccion11-5');
+        } else {
+          setPestanaActiva('seccion11-1');
+        }
         break;
       case '12':
         setPestanaActiva('seccion12');
@@ -248,7 +295,7 @@ export default function App() {
           </nav>
         </header>
 
-        <main className="main-content">
+        <main className={`main-content${contenidoAncho ? ' main-content-wide' : ''}`}>
           
           {pestanaActiva === 'principal' && (
             <div>
@@ -442,9 +489,11 @@ export default function App() {
             />
           )}
 
-          {pestanaActiva === 'seccion7-6' && (
+          {(pestanaActiva === 'seccion7-6' || pestanaActiva.startsWith('seccion7-6-presupuesto-')) && (
             <Seccion7_6
               onVolver={() => setPestanaActiva('seccion7')}
+              anioInicial={pestanaActiva.startsWith('seccion7-6-presupuesto-') ? pestanaActiva.slice('seccion7-6-presupuesto-'.length) : undefined}
+              busquedaInicial={pestanaActiva.startsWith('seccion7-6-presupuesto-') ? 'presupuesto' : undefined}
             />
           )}
 
@@ -481,44 +530,154 @@ export default function App() {
             <Seccion9_3 onVolver={() => setPestanaActiva('seccion9')} onVolverSeccion={() => setPestanaActiva('principal')} />
           )}
 
-          {['seccion10', 'seccion11', 'seccion12', 'seccion13', 'seccion14'].includes(pestanaActiva) && (
-            <div className="content-box-wide space-y-6">
-              <div className="flex items-center gap-2 text-sm font-semibold text-slate-700 bg-slate-100 p-3 rounded-lg border border-slate-200">
-                <button onClick={() => setPestanaActiva('principal')} className="text-blue-700 hover:underline cursor-pointer bg-transparent border-none">
-                  Transparencia Activa
-                </button>
-                <span className="text-slate-400">&gt;</span>
-                <span className="text-slate-900">Sección en desarrollo / {pestanaActiva.toUpperCase()}</span>
-              </div>
-              <div className="content-box text-center py-12 space-y-3">
-                <h2 className="content-title">Apartado Histórico</h2>
-                <p className="text-slate-600 text-sm">
-                  Esta sección está preparada en el sistema. Pronto cargaremos sus registros y tablas correspondientes.
-                </p>
-                <button 
-                  onClick={() => setPestanaActiva('principal')}
-                  className="px-4 py-2 bg-blue-700 text-white text-xs font-semibold rounded-lg shadow hover:bg-blue-800 transition-all cursor-pointer"
-                >
-                  Volver al inicio
-                </button>
-              </div>
-            </div>
+          {pestanaActiva === 'seccion10-1' && (
+            <Seccion10_1
+              onVolver={() => setPestanaActiva('principal')}
+              onVolverSeccion={() => setPestanaActiva('principal')}
+            />
           )}
 
-          {categoriaSeleccionada && (
-            <div className="content-box">
-              <h2 className="content-title">{categoriaSeleccionada.categoria}</h2>
-              <ul className="space-y-3 mt-4">
-                {categoriaSeleccionada.enlaces.map((enlace, idx) => (
-                  <li key={idx} className="p-3 bg-slate-50 rounded-lg hover:bg-blue-50/50 transition-colors border border-slate-100 flex items-center justify-between">
-                    <a href={enlace.url} target="_blank" rel="noreferrer" className="text-sm font-medium text-blue-700 hover:underline flex items-center gap-2">
-                      <ExternalLink className="w-4 h-4 text-blue-500 shrink-0" />
-                      <span>{enlace.texto}</span>
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
+          {pestanaActiva === 'seccion10-2' && (
+            <Seccion10_2
+              onVolver={() => setPestanaActiva('principal')}
+              onVolverSeccion={() => setPestanaActiva('principal')}
+              onAbrirConsejoConsultivo={() => setPestanaActiva('seccion10-2-consejo')}
+              onAbrirSecretariaMunicipal={() => setPestanaActiva('seccion10-2-secretaria')}
+              onAbrirOrdenanza={() => window.open('about:blank', '_blank', 'noopener,noreferrer')}
+            />
+          )}
+
+          {pestanaActiva === 'seccion10-2-consejo' && (
+            <Seccion4
+              onVolver={() => setPestanaActiva('seccion10-2')}
+              unidadInicial="consultivo"
+            />
+          )}
+
+          {pestanaActiva === 'seccion10-2-secretaria' && (
+            <Seccion8TramSecreMuni
+              onVolver={() => setPestanaActiva('seccion10-2')}
+              onVolverSeccion={() => setPestanaActiva('seccion10-2')}
+            />
+          )}
+
+          {pestanaActiva === 'seccion10-3' && (
+            <Seccion10_3
+              onVolver={() => setPestanaActiva('principal')}
+              onVolverSeccion={() => setPestanaActiva('principal')}
+              onAbrirConsejoConsultivo={() => setPestanaActiva('seccion10-3-consejo')}
+            />
+          )}
+
+          {pestanaActiva === 'seccion10-3-consejo' && (
+            <Seccion4
+              onVolver={() => setPestanaActiva('seccion10-3')}
+              unidadInicial="consultivo"
+            />
+          )}
+
+          {pestanaActiva === 'seccion10-4' && (
+            <Seccion10_4
+              onVolver={() => setPestanaActiva('principal')}
+              onVolverSeccion={() => setPestanaActiva('principal')}
+            />
+          )}
+
+          {pestanaActiva === 'seccion10-5' && (
+            <Seccion10_5
+              onVolver={() => setPestanaActiva('principal')}
+              onVolverSeccion={() => setPestanaActiva('principal')}
+            />
+          )}
+
+          {pestanaActiva === 'seccion11-1' && (
+            <Seccion11_1
+              onVolverSeccion={() => setPestanaActiva('principal')}
+              onAbrirPresupuesto={(anio) => setPestanaActiva(`seccion7-6-presupuesto-${anio}`)}
+            />
+          )}
+
+          {pestanaActiva === 'seccion11-2' && (
+            <Seccion11_2
+              onVolverSeccion={() => setPestanaActiva('principal')}
+            />
+          )}
+
+          {pestanaActiva === 'seccion11-3' && (
+            <Seccion11_3
+              onVolverSeccion={() => setPestanaActiva('principal')}
+            />
+          )}
+
+          {pestanaActiva === 'seccion11-4' && (
+            <Seccion11_4
+              onVolverSeccion={() => setPestanaActiva('principal')}
+            />
+          )}
+
+          {pestanaActiva === 'seccion11-5' && (
+            <Seccion11_5
+              onVolverSeccion={() => setPestanaActiva('principal')}
+            />
+          )}
+
+          {pestanaActiva === 'seccion12' && (
+            <Seccion12
+              onVolver={() => setPestanaActiva('principal')}
+              onAbrirAuditoriaInterna={() => setPestanaActiva('seccion12-1')}
+              onAbrirAuditoriaExterna={() => setPestanaActiva('seccion12-2')}
+            />
+          )}
+
+          {pestanaActiva === 'seccion12-1' && (
+            <Seccion12_1
+              onVolver={() => setPestanaActiva('seccion12')}
+              onVolverSeccion={() => setPestanaActiva('principal')}
+            />
+          )}
+
+          {pestanaActiva === 'seccion12-2' && (
+            <Seccion12_2
+              onVolver={() => setPestanaActiva('seccion12')}
+              onVolverSeccion={() => setPestanaActiva('principal')}
+            />
+          )}
+
+          {pestanaActiva === 'seccion13' && (
+            <Seccion13 onVolverSeccion={() => setPestanaActiva('principal')} />
+          )}
+
+          {pestanaActiva === 'seccion14' && (
+            <Seccion14 onVolverSeccion={() => setPestanaActiva('principal')} />
+          )}
+
+          {categoriaSeleccionada?.id === 'ley-20730' && (
+            <Ley20730 categoria={categoriaSeleccionada} onVolver={() => setPestanaActiva('principal')} />
+          )}
+
+          {categoriaSeleccionada?.id === 'otros-antecedentes' && (
+            <OtrosAntecedentes
+              onVolver={() => setPestanaActiva('principal')}
+              onAbrirPladeco={() => setPestanaActiva('seccion7-2')}
+              onAbrirPlanRegulador={() => setPestanaActiva('seccion7-3')}
+              onAbrirMetas={() => setPestanaActiva('metas-institucionales')}
+            />
+          )}
+
+          {categoriaSeleccionada?.id === 'acceso-info' && (
+            <AccesoInformacionPublica categoria={categoriaSeleccionada} onVolver={() => setPestanaActiva('principal')} />
+          )}
+
+          {categoriaSeleccionada?.id === 'costos-reproduccion' && (
+            <CostosReproduccion categoria={categoriaSeleccionada} onVolver={() => setPestanaActiva('principal')} />
+          )}
+
+          {categoriaSeleccionada?.id === 'sitios-relacionados' && (
+            <OtrosSitiosRelacionados categoria={categoriaSeleccionada} onVolver={() => setPestanaActiva('principal')} />
+          )}
+
+          {pestanaActiva === 'metas-institucionales' && (
+            <MetasInstitucionales onVolver={() => setPestanaActiva('otros-antecedentes')} />
           )}
 
           {pestanaActiva === 'videos' && (
@@ -531,9 +690,45 @@ export default function App() {
           )}
 
           {pestanaActiva === 'sabias' && (
-            <div className="content-box space-y-6">
-              <h2 className="text-xl font-bold text-blue-900 border-b pb-2">Sabías que...</h2>
-              <p className="text-sm text-slate-800">El plazo legal para la entrega de la información es de 20 días hábiles...</p>
+            <div className="content-box space-y-5">
+              <h2 className="border-b border-slate-200 pb-3 text-xl font-bold text-blue-900">Sabías que...</h2>
+              <p className="text-sm leading-relaxed text-slate-800">
+                El plazo legal para la entrega de la información requerida es de 20 días hábiles, contados desde la recepción de su solicitud, que cumple con los requisitos enunciados en el artículo 12 de la Ley 20.285. Dicho plazo eventualmente podrá variar en caso de:
+              </p>
+
+              <section className="space-y-2 rounded-xl border border-slate-200 bg-white p-4 sm:p-5">
+                <h3 className="font-semibold text-blue-900">1. Subsanación:</h3>
+                <p className="text-sm leading-relaxed text-slate-700">
+                  En el caso de que la solicitud no reúna los requisitos enunciados en el inciso 1 del artículo 12 de la Ley 20.285, se requerirá al solicitante para que, en un plazo de 5 días, contados desde la respectiva notificación, subsane la falta. Indicando expresamente que, en caso de no subsanar, se le tendrá por desistido(a) de su solicitud.
+                </p>
+              </section>
+
+              <section className="space-y-2 rounded-xl border border-slate-200 bg-white p-4 sm:p-5">
+                <h3 className="font-semibold text-blue-900">2. Prórroga del plazo:</h3>
+                <p className="text-sm leading-relaxed text-slate-700">
+                  Excepcionalmente el plazo de entrega de la información podrá ser prorrogado por 10 días hábiles, cuando existan circunstancias que hagan difícil reunir la información solicitada. En dicha situación la Municipalidad se lo comunicará al solicitante antes del vencimiento del plazo legal.
+                </p>
+              </section>
+
+              <p className="text-sm leading-relaxed text-slate-800">
+                Asimismo le comunicaremos que vencido el plazo de 20 días hábiles, establecido en el artículo 14 de la Ley 20.285, para la entrega de la documentación requerida, o denegada la petición, usted tiene derecho a recurrir ante el Consejo para la Transparencia, solicitando amparo a su derecho de acceso a la información.
+              </p>
+
+              <button
+                type="button"
+                disabled
+                aria-label="Video Transparencia Municipal, enlace pendiente"
+                className="flex w-full max-w-xl cursor-not-allowed items-center gap-5 rounded-2xl bg-gradient-to-r from-blue-800 to-blue-600 p-5 text-left text-white opacity-90 shadow-lg sm:p-6"
+              >
+                <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-white/15">
+                  <Play className="h-7 w-7 fill-current" aria-hidden="true" />
+                </span>
+                <span className="flex-1">
+                  <span className="block text-base font-bold sm:text-lg">Video Transparencia Municipal</span>
+                  <span className="mt-1 block text-sm text-blue-100">Enlace del video pendiente</span>
+                </span>
+                <Video className="hidden h-6 w-6 shrink-0 text-blue-100 sm:block" aria-hidden="true" />
+              </button>
             </div>
           )}
 

@@ -140,8 +140,15 @@ export const antecedentesAdicionales = [
     id: "ley-20730",
     categoria: "Ley 20.730",
     enlaces: [
-      { texto: "Regula el Lobby y las Gestiones que Representen Intereses Particulares Ante las Autoridades y Funcionarios", url: "#" },
-      { texto: "Ley 20.730", url: "#" }
+      { texto: "Regula el Lobby y las Gestiones que Representen Intereses Particulares Ante las Autoridades y Funcionarios", url: "https://www.leylobby.gob.cl/instituciones/MU146" },
+      { texto: "Ley 20.730", url: "https://www.bcn.cl/leychile/navegar?idNorma=1060115&buscar=LOBBY" }
+    ]
+  },
+  {
+    id: "otros-antecedentes",
+    categoria: "Otros antecedentes",
+    enlaces: [
+      { texto: "Otros antecedentes", url: "#" }
     ]
   },
   {
@@ -149,32 +156,32 @@ export const antecedentesAdicionales = [
     categoria: "Acceso a Información Pública",
     enlaces: [
       { texto: "Índice de Documentos Reservados", url: "#" },
-      { texto: "Solicitud de Información", url: "#" },
+      { texto: "Solicitud de Información", url: "https://www.portaltransparencia.cl/PortalPdT/web/guest/directorio-de-organismos-regulados?p_p_id=pdtorganismos_WAR_pdtorganismosportlet&orgcode=843d1e781199d1b594ffd7c79c22d339" },
       { texto: "Carta de Derechos Ciudadanos", url: "#" },
       { texto: "Reglamento Interno de Transparencia", url: "#" },
-      { texto: "Normas de la Ley sobre Acceso a la Información Pública", url: "#" },
-      { texto: "Tutoriales Derecho de Acceso", url: "#" }
+      { texto: "Normas de la Ley sobre Acceso a la Información Pública", url: "https://www.gobiernotransparente.gob.cl/asistente/normas.php" },
+      { texto: "Tutoriales Derecho de Acceso", url: "https://www.cenma.cl/contacto/" }
     ]
   },
   {
     id: "costos-reproduccion",
     categoria: "Costos Directos de Reproducción",
     enlaces: [
-      { texto: "Costos de Reproducción", url: "#" }
+      { texto: "Costos de Reproducción", url: "" }
     ]
   },
   {
     id: "sitios-relacionados",
     categoria: "Otros Sitios Relacionados",
     enlaces: [
-      { texto: "SINIM", url: "#" },
-      { texto: "Instituto Nacional de Estadística", url: "#" },
-      { texto: "Registro Social", url: "#" },
-      { texto: "Observatorio Social", url: "#" },
-      { texto: "Observatorio Urbano", url: "#" },
-      { texto: "Biblioteca Congreso Reportes Estadístico", url: "#" },
-      { texto: "Corporación de Asistencia Judicial", url: "#" },
-      { texto: "Contraloría General de la República", url: "#" }
+      { texto: "SINIM", url: "https://datos.sinim.gov.cl/ficha_comunal.php" },
+      { texto: "Instituto Nacional de Estadística", url: "https://www.ine.gob.cl/" },
+      { texto: "Registro Social", url: "https://www.registrosocial.gob.cl/mi-registro/" },
+      { texto: "Observatorio Social", url: "https://observatorio.ministeriodesarrollosocial.gob.cl/" },
+      { texto: "Observatorio Urbano", url: "http://www.observatoriourbano.cl/indurb/indicadores.asp?id_user=&id_indicador=80&idComCiu=1" },
+      { texto: "Biblioteca Congreso Reportes Estadístico", url: "http://reportescomunales.bcn.cl/2013/index.php/Lo_Prado" },
+      { texto: "Corporación de Asistencia Judicial", url: "https://www.contraloria.cl/NewPortal2/portal2/appmanager/portalCGR/v3ESP?_nfpb=true&_pageLabel=P18200239681286226265111" },
+      { texto: "Contraloría General de la República", url: "http://www.cajmetro.cl/" }
     ]
   }
 ];

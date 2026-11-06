@@ -66,6 +66,8 @@ const patentesPermisos = [
 
 interface Seccion7_6Props {
   onVolver: () => void;
+  anioInicial?: string;
+  busquedaInicial?: string;
 }
 
 interface CategoriaResolucion {
@@ -79,10 +81,10 @@ interface CategoriaResolucion {
 const normalizarTexto = (texto: string) =>
   texto.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLocaleLowerCase();
 
-export default function Seccion7_6({ onVolver }: Seccion7_6Props) {
+export default function Seccion7_6({ onVolver, anioInicial = '2016', busquedaInicial = '' }: Seccion7_6Props) {
   const aniosDisponibles = ['2016', '2015', '2014', '2013', '2012', '2011', '2010', '2009'];
-  const [anioSeleccionado, setAnioSeleccionado] = useState<string>('2016');
-  const [busqueda, setBusqueda] = useState('');
+  const [anioSeleccionado, setAnioSeleccionado] = useState<string>(anioInicial);
+  const [busqueda, setBusqueda] = useState(busquedaInicial);
   const terminoBusqueda = normalizarTexto(busqueda.trim());
 
   // Categorías de "Resoluciones con efectos sobre terceros"

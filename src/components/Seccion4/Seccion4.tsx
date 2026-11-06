@@ -4,6 +4,7 @@ import PdfLinkButton from '../PdfLinkButton';
   
 interface Seccion4Props {   
 onVolver: () => void;   
+unidadInicial?: string;
 }   
   
 interface Consejero {   
@@ -143,8 +144,8 @@ subUnidadesFinanzas?: SubUnidadFinanzas[];
 personaExtraFinanzas?: SubUnidadFinanzasPersona;   
 }   
   
-export default function Seccion4({ onVolver }: Seccion4Props) {   
-const [unidadSeleccionada, setUnidadSeleccionada] = useState<string>('todos');   
+export default function Seccion4({ onVolver, unidadInicial = 'todos' }: Seccion4Props) {
+const [unidadSeleccionada, setUnidadSeleccionada] = useState<string>(unidadInicial);
 const [unidadesAbiertas, setUnidadesAbiertas] = useState<Record<string, boolean>>({});   
   
 const [seccionNormativaAbierta, setSeccionNormativaAbierta] = useState<boolean>(false);   
