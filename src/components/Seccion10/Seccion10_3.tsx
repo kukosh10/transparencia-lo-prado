@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ArrowLeft, ChevronRight, FileText } from 'lucide-react';
+import { ArrowLeft, ChevronRight, ExternalLink, FileText } from 'lucide-react';
 
 interface Seccion10_3Props {
   onVolver: () => void;
